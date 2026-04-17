@@ -313,6 +313,7 @@
 
       .decision-strip,
       .free-steps,
+      .testimonials-section,
       .faq-section {
         background: var(--soft);
       }
@@ -610,6 +611,135 @@
         padding: 24px;
       }
 
+      .testimonial-shell {
+        position: relative;
+        display: grid;
+        gap: 20px;
+      }
+
+      .testimonial-controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      .testimonial-buttons {
+        display: flex;
+        gap: 8px;
+      }
+
+      .carousel-btn {
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--white);
+        color: var(--black);
+        font: inherit;
+        font-size: 1.25rem;
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      .testimonial-edge {
+        position: absolute;
+        z-index: 2;
+        top: calc(50% - 18px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
+      }
+
+      .testimonial-edge.is-prev {
+        left: -22px;
+      }
+
+      .testimonial-edge.is-next {
+        right: -22px;
+      }
+
+      .testimonial-track {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: calc((100% - 32px) / 3);
+        gap: 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+      }
+
+      .testimonial-track::-webkit-scrollbar {
+        display: none;
+      }
+
+      .testimonial-card {
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 22px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--white);
+        scroll-snap-align: start;
+      }
+
+      .testimonial-card blockquote {
+        margin: 0;
+        color: var(--ink);
+        font-size: 1.08rem;
+        line-height: 1.6;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .testimonial-avatar {
+        flex: 0 0 auto;
+        width: 56px;
+        height: 56px;
+        border-radius: var(--radius);
+        object-fit: cover;
+        border: 2px solid var(--orange);
+      }
+
+      .testimonial-author strong,
+      .testimonial-author span {
+        display: block;
+      }
+
+      .testimonial-author span {
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .testimonial-dots {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .testimonial-dots button {
+        width: 10px;
+        height: 10px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: #bdb6ae;
+        cursor: pointer;
+      }
+
+      .testimonial-dots button.is-active {
+        background: var(--orange);
+      }
+
       .group-section {
         justify-content: space-between;
         gap: 24px;
@@ -684,6 +814,10 @@
           grid-template-columns: 1fr;
         }
 
+        .testimonial-track {
+          grid-auto-columns: calc((100% - 16px) / 2);
+        }
+
         .method-layout img {
           min-height: 320px;
         }
@@ -750,6 +884,19 @@
         .signal-list {
           grid-template-columns: 1fr;
         }
+
+        .testimonial-controls {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .testimonial-edge {
+          display: none;
+        }
+
+        .testimonial-track {
+          grid-auto-columns: 88%;
+        }
       }
     </style>
   </head>
@@ -763,6 +910,7 @@
         <a href="#jornada">Jornada</a>
         <a href="#metodo">Método</a>
         <a href="#caminhos">Caminhos</a>
+        <a href="#depoimentos">Depoimentos</a>
         <a href="#oferta">Oferta</a>
       </nav>
       <a class="header-cta" href="#jornada">Entender antes de escolher</a>
@@ -1023,6 +1171,122 @@
         </div>
       </section>
 
+      <section class="testimonials-section" id="depoimentos" aria-labelledby="testimonials-title">
+        <div class="testimonial-controls">
+          <div class="section-head compact">
+            <p class="eyebrow dark">Depoimentos</p>
+            <h2 id="testimonials-title">Relatos de quem começou a organizar energia com mais clareza.</h2>
+            <p>
+              Experiências de participantes que encontraram linguagem, ferramentas e ritmo para
+              lidar com o Burnout Autista sem transformar cuidado em mais cobrança.
+            </p>
+          </div>
+
+          <div class="testimonial-buttons" aria-label="Controles dos depoimentos">
+            <button class="carousel-btn" type="button" data-testimonial-prev aria-label="Depoimento anterior">&lsaquo;</button>
+            <button class="carousel-btn" type="button" data-testimonial-next aria-label="Próximo depoimento">&rsaquo;</button>
+          </div>
+        </div>
+
+        <div class="testimonial-shell">
+          <button class="carousel-btn testimonial-edge is-prev" type="button" data-testimonial-prev aria-label="Depoimento anterior">&lsaquo;</button>
+          <div class="testimonial-track" data-testimonial-track tabindex="0" aria-label="Carrossel de depoimentos">
+            <article class="testimonial-card">
+              <blockquote>
+                "Pela primeira vez consegui entender minha exaustão sem achar que era falta de esforço. O Banco de Energia virou meu ponto de partida."
+              </blockquote>
+              <div class="testimonial-author">
+                <img
+                  class="testimonial-avatar"
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&h=160&q=80"
+                  alt="Foto de Larissa M."
+                  loading="lazy"
+                />
+                <div>
+                  <strong>Larissa M.</strong>
+                  <span>Participante da Jornada</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <blockquote>
+                "Eu precisava de passos menores. A mentoria me ajudou a escolher uma prioridade por vez e parar de tentar resolver tudo no mesmo dia."
+              </blockquote>
+              <div class="testimonial-author">
+                <img
+                  class="testimonial-avatar"
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&h=160&q=80"
+                  alt="Foto de Renato C."
+                  loading="lazy"
+                />
+                <div>
+                  <strong>Renato C.</strong>
+                  <span>Participante da Jornada</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <blockquote>
+                "As ferramentas são simples de aplicar mesmo nos dias de pouca energia. Ter gravações também tirou a pressão de acompanhar tudo ao vivo."
+              </blockquote>
+              <div class="testimonial-author">
+                <img
+                  class="testimonial-avatar"
+                  src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=160&h=160&q=80"
+                  alt="Foto de Ana P."
+                  loading="lazy"
+                />
+                <div>
+                  <strong>Ana P.</strong>
+                  <span>Participante da Jornada</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <blockquote>
+                "O grupo trouxe pertencimento e previsibilidade. Eu consegui falar sobre limites sem me sentir sozinho no processo."
+              </blockquote>
+              <div class="testimonial-author">
+                <img
+                  class="testimonial-avatar"
+                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&h=160&q=80"
+                  alt="Foto de Marcos V."
+                  loading="lazy"
+                />
+                <div>
+                  <strong>Marcos V.</strong>
+                  <span>Participante da comunidade</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <blockquote>
+                "Saí do modo apagar incêndio. Hoje consigo perceber sinais antes do colapso e ajustar a rotina com mais gentileza."
+              </blockquote>
+              <div class="testimonial-author">
+                <img
+                  class="testimonial-avatar"
+                  src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&h=160&q=80"
+                  alt="Foto de Bianca S."
+                  loading="lazy"
+                />
+                <div>
+                  <strong>Bianca S.</strong>
+                  <span>Participante da Jornada</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <button class="carousel-btn testimonial-edge is-next" type="button" data-testimonial-next aria-label="Próximo depoimento">&rsaquo;</button>
+
+          <div class="testimonial-dots" data-testimonial-dots aria-label="Selecionar depoimento"></div>
+        </div>
+      </section>
+
       <section class="group-section" id="grupo" aria-labelledby="group-title">
         <div>
           <p class="eyebrow">Comunidade</p>
@@ -1068,6 +1332,11 @@
       const choiceForm = document.getElementById("choiceForm");
       const choiceResult = document.getElementById("choiceResult");
       const faqItems = document.querySelectorAll(".faq-item");
+      const testimonialTrack = document.querySelector("[data-testimonial-track]");
+      const testimonialCards = testimonialTrack ? Array.from(testimonialTrack.children) : [];
+      const testimonialPrevButtons = document.querySelectorAll("[data-testimonial-prev]");
+      const testimonialNextButtons = document.querySelectorAll("[data-testimonial-next]");
+      const testimonialDots = document.querySelector("[data-testimonial-dots]");
 
       const paths = {
         ready: {
@@ -1122,6 +1391,90 @@
           button.setAttribute("aria-expanded", String(isOpen));
         });
       });
+
+      if (testimonialTrack && testimonialCards.length && testimonialPrevButtons.length && testimonialNextButtons.length && testimonialDots) {
+        const getCardStep = () => {
+          const firstCard = testimonialCards[0];
+          const styles = window.getComputedStyle(testimonialTrack);
+          const gap = Number.parseFloat(styles.columnGap) || 0;
+
+          return firstCard.getBoundingClientRect().width + gap;
+        };
+
+        const getMaxTestimonialIndex = () => {
+          const maxScroll = testimonialTrack.scrollWidth - testimonialTrack.clientWidth;
+
+          return Math.max(0, Math.ceil(maxScroll / getCardStep()));
+        };
+
+        const getActiveIndex = () => {
+          const activeIndex = Math.round(testimonialTrack.scrollLeft / getCardStep());
+
+          return Math.min(activeIndex, getMaxTestimonialIndex());
+        };
+
+        function updateTestimonialDots() {
+          const activeIndex = getActiveIndex();
+
+          testimonialDots.querySelectorAll("button").forEach((dot, index) => {
+            dot.classList.toggle("is-active", index === activeIndex);
+            dot.setAttribute("aria-current", index === activeIndex ? "true" : "false");
+          });
+        }
+
+        function renderTestimonialDots() {
+          const dotsCount = getMaxTestimonialIndex() + 1;
+
+          testimonialDots.textContent = "";
+
+          for (let index = 0; index < dotsCount; index += 1) {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.setAttribute("aria-label", `Ir para grupo de depoimentos ${index + 1}`);
+            dot.addEventListener("click", () => {
+              testimonialTrack.scrollTo({
+                left: getCardStep() * index,
+                behavior: "smooth"
+              });
+            });
+
+            testimonialDots.appendChild(dot);
+          }
+
+          updateTestimonialDots();
+        }
+
+        function scrollTestimonials(direction) {
+          const activeIndex = getActiveIndex();
+          const maxIndex = getMaxTestimonialIndex();
+          let nextIndex = activeIndex + direction;
+
+          if (nextIndex < 0) {
+            nextIndex = maxIndex;
+          }
+
+          if (nextIndex > maxIndex) {
+            nextIndex = 0;
+          }
+
+          testimonialTrack.scrollTo({
+            left: getCardStep() * nextIndex,
+            behavior: "smooth"
+          });
+        }
+
+        testimonialPrevButtons.forEach((button) => {
+          button.addEventListener("click", () => scrollTestimonials(-1));
+        });
+
+        testimonialNextButtons.forEach((button) => {
+          button.addEventListener("click", () => scrollTestimonials(1));
+        });
+
+        testimonialTrack.addEventListener("scroll", updateTestimonialDots, { passive: true });
+        window.addEventListener("resize", renderTestimonialDots);
+        renderTestimonialDots();
+      }
     </script>
   </body>
 </html>
