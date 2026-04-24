@@ -573,22 +573,65 @@
 
       .timeline {
         display: grid;
-        gap: 14px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+        max-width: 976px;
+        margin: 0 auto;
+      }
+
+      .timeline-section .section-head {
+        max-width: 880px;
+        margin: 0 auto 42px;
+        text-align: center;
+      }
+
+      .timeline-section .section-head p {
+        margin-right: auto;
+        margin-left: auto;
       }
 
       .timeline-item {
-        display: grid;
-        grid-template-columns: 170px 1fr;
-        gap: 20px;
-        align-items: start;
+        min-height: 194px;
+        padding: 24px;
+        border-color: #e1d8cf;
+        box-shadow: 0 12px 28px rgba(23, 23, 23, 0.06);
+        transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
       }
 
-      .arrow {
-        display: grid;
-        place-items: center;
-        min-height: 34px;
-        color: var(--orange-dark);
+      .timeline-item:hover {
+        border-color: rgba(242, 106, 33, 0.42);
+        transform: translateY(-3px);
+        box-shadow: 0 18px 36px rgba(23, 23, 23, 0.1);
+      }
+
+      .timeline-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        margin-bottom: 24px;
+        color: var(--orange);
+        font-size: 1.35rem;
         font-weight: 900;
+        line-height: 0;
+      }
+
+      .timeline-icon svg {
+        display: block;
+        flex: 0 0 auto;
+        width: 30px;
+        height: 30px;
+        stroke: currentColor;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+
+      .timeline-item h3 {
+        margin-top: 0;
+        color: #4b2c18;
       }
 
       .story-box {
@@ -599,6 +642,84 @@
         margin: 0 0 16px;
         color: var(--muted);
         font-size: 1.08rem;
+      }
+
+      .story-steps {
+        display: grid;
+        gap: 16px;
+        margin: 0 0 16px;
+        padding: 0;
+        list-style: none;
+        counter-reset: story-step;
+      }
+
+      .story-steps li {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 12px;
+        align-items: start;
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.65;
+        counter-increment: story-step;
+      }
+
+      .story-steps li::before {
+        content: counter(story-step);
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        background: var(--orange);
+        color: var(--black);
+        font-size: 0.92rem;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .continuous-block {
+        max-width: var(--max);
+      }
+
+      .continuous-block h2 {
+        margin-bottom: 28px;
+      }
+
+      .continuous-card {
+        width: 100%;
+        padding: 30px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--white);
+        box-shadow: 0 18px 42px rgba(23, 23, 23, 0.12);
+      }
+
+      .continuous-text {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 34px;
+      }
+
+      .continuous-card p {
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-size: 1.13rem;
+        line-height: 1.65;
+      }
+
+      .continuous-text p:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .continuous-card strong {
+        color: var(--orange-dark);
+        font-weight: 900;
+      }
+
+      .continuous-card .cta-row {
+        justify-content: center;
+        margin-top: 24px;
       }
 
       .offer-layout {
@@ -741,8 +862,16 @@
           grid-template-columns: 1fr;
         }
 
+        .timeline {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
         .testimonial-track {
           grid-auto-columns: calc((100% - 16px) / 2);
+        }
+
+        .continuous-text {
+          grid-template-columns: 1fr;
         }
 
         .authority-photo {
@@ -823,8 +952,11 @@
         }
 
         .timeline-item {
+          min-height: 0;
+        }
+
+        .timeline {
           grid-template-columns: 1fr;
-          gap: 6px;
         }
 
         .testimonial-controls {
@@ -864,8 +996,8 @@
         <div class="hero-content">
           <p class="eyebrow">Jornada M5C &mdash; Mentoria de Terapia Ocupacional para Burnout Autista</p>
           <p class="eyebrow">O esgotamento n&atilde;o precisa ser seu normal</p>
-          <h1 id="hero-title">Se voc&ecirc; est&aacute; esgotado, talvez n&atilde;o falte disciplina. Falte uma metodologia pensada para seu funcionamento at&iacute;pico.</h1>
-          <p class="hero-copy">Aprenda a lidar com o burnout autista mesmo que precise continuar trabalhando.</p>
+          <h1 id="hero-title">Se voc&ecirc; est&aacute; esgotado, talvez n&atilde;o falte disciplina Falte uma metodologia pensada para seu funcionamento at&iacute;pico</h1>
+          <p class="hero-copy">Aprenda a lidar com o burnout autista mesmo que precise continuar trabalhando</p>
 
           <div class="learn-box" aria-label="Aprendizados gratuitos">
             <strong>Assista &agrave;s etapas gratuitas da mentoria e aprenda 3 coisas essenciais:</strong>
@@ -1131,55 +1263,62 @@
         </div>
       </section>
 
-      <section aria-labelledby="pratica-title">
+      <section class="soft-section timeline-section" aria-labelledby="pratica-title">
         <div class="section-head">
-          <h2 id="pratica-title">A mentoria segue um ciclo mensal estruturado, pensado para respeitar seu ritmo e sua energia.</h2>
-          <p>Voc&ecirc; sempre sabe o que est&aacute; acontecendo, em que etapa voc&ecirc; est&aacute; e qual &eacute; o pr&oacute;ximo passo.</p>
+          <h2 id="pratica-title">O que voc&ecirc; encontra na mentoria</h2>
+          <p>Um ciclo mensal estruturado para voc&ecirc; saber o que est&aacute; acontecendo, em que etapa est&aacute; e qual &eacute; o pr&oacute;ximo passo.</p>
         </div>
 
         <div class="timeline">
           <article class="timeline-item">
-            <span>In&iacute;cio do m&ecirc;s</span>
+            <span class="timeline-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2" /><path d="M8 3v4" /><path d="M16 3v4" /><path d="M4 10h16" /><path d="M8 14h3" /><path d="M14 14h2" /></svg>
+            </span>
             <div>
               <h3>Nova trilha</h3>
               <p>Voc&ecirc; acessa a nova trilha com direcionamento claro do que ser&aacute; trabalhado.</p>
             </div>
           </article>
-          <div class="arrow">&darr;</div>
           <article class="timeline-item">
-            <span>Semana 1</span>
+            <span class="timeline-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="m10 8 6 4-6 4V8Z" /></svg>
+            </span>
             <div>
               <h3>Abertura da trilha</h3>
               <p>Voc&ecirc; recebe a estrat&eacute;gia e ferramenta principal do m&ecirc;s, com uma aula gravada e o primeiro ajuste poss&iacute;vel de aplicar.</p>
             </div>
           </article>
-          <div class="arrow">&darr;</div>
           <article class="timeline-item">
-            <span>Semana 2</span>
+            <span class="timeline-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="m8 12 2.6 2.6L16.5 9" /></svg>
+            </span>
             <div>
               <h3>Pr&aacute;tica no seu ritmo</h3>
               <p>Voc&ecirc; aplica no seu tempo, com orienta&ccedil;&otilde;es simples. Pode trocar na comunidade, se quiser.</p>
             </div>
           </article>
-          <div class="arrow">&darr;</div>
           <article class="timeline-item">
-            <span>Semana 3</span>
+            <span class="timeline-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="6" width="12" height="12" rx="2" /><path d="m16 10 4-2.5v9L16 14" /><path d="M8 20h8" /></svg>
+            </span>
             <div>
-              <h3>Encontro em grupo</h3>
-              <p>Um encontro ao vivo, gravado, para ajustes, direcionamento e d&uacute;vidas. Sem press&atilde;o para exposi&ccedil;&atilde;o.</p>
+              <h3>Meet mensal com a Liz</h3>
+              <p>Encontro ao vivo no Meet com a Liz para ajustes, direcionamento e d&uacute;vidas. Sem press&atilde;o para exposi&ccedil;&atilde;o.</p>
             </div>
           </article>
-          <div class="arrow">&darr;</div>
           <article class="timeline-item">
-            <span>Semana 4</span>
+            <span class="timeline-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.6-5.7" /><path d="M18 3v4h-4" /><path d="M20 12a8 8 0 0 1-13.6 5.7" /><path d="M6 21v-4h4" /></svg>
+            </span>
             <div>
               <h3>Revis&atilde;o e organiza&ccedil;&atilde;o</h3>
               <p>Voc&ecirc; avalia o que funcionou, o que drenou, o que ajustar e define o pr&oacute;ximo passo com mais clareza.</p>
             </div>
           </article>
-          <div class="arrow">&darr;</div>
           <article class="timeline-item">
-            <span>5 semanas</span>
+            <span class="timeline-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /><path d="M12 2v3" /><path d="M12 19v3" /><path d="M2 12h3" /><path d="M19 12h3" /><path d="m4.9 4.9 2.1 2.1" /><path d="m17 17 2.1 2.1" /><path d="m19.1 4.9-2.1 2.1" /><path d="m7 17-2.1 2.1" /></svg>
+            </span>
             <div>
               <h3>Semana extra de respiro</h3>
               <p>Se o m&ecirc;s tiver 5 semanas, voc&ecirc; tem uma semana extra sem press&atilde;o, com orienta&ccedil;&otilde;es leves.</p>
@@ -1200,10 +1339,12 @@
         <div class="story-box">
           <h2 id="story-title">Como isso acontece na pr&aacute;tica</h2>
           <p>Imagina um cen&aacute;rio comum dentro da Jornada: voc&ecirc; come&ccedil;a o m&ecirc;s j&aacute; cansada, sem saber por onde organizar a rotina.</p>
-          <p>Na primeira semana, voc&ecirc; assiste a aula e percebe algo simples: o que est&aacute; te drenando n&atilde;o &eacute; o que voc&ecirc; achava. Voc&ecirc; faz um primeiro ajuste pequeno. Nada radical. Algo poss&iacute;vel.</p>
-          <p>Na segunda semana, voc&ecirc; aplica no seu ritmo. Tem dias que consegue fazer. Tem dias que n&atilde;o. Mas, pela primeira vez, voc&ecirc; entende o porqu&ecirc;. E isso j&aacute; muda a forma como voc&ecirc; se cobra.</p>
-          <p>Na terceira semana, voc&ecirc; assiste ao encontro, escuta outras pessoas passando por coisas parecidas e recebe direcionamentos que fazem sentido pra sua realidade, sem precisar se expor.</p>
-          <p>Na &uacute;ltima semana, voc&ecirc; olha para o m&ecirc;s e percebe o que funcionou, o que te drenou, o que precisa mudar e, principalmente, que voc&ecirc; n&atilde;o est&aacute; mais no mesmo ponto que come&ccedil;ou.</p>
+          <ol class="story-steps">
+            <li>Na primeira semana, voc&ecirc; assiste a aula e percebe algo simples: o que est&aacute; te drenando n&atilde;o &eacute; o que voc&ecirc; achava. Voc&ecirc; faz um primeiro ajuste pequeno. Nada radical. Algo poss&iacute;vel.</li>
+            <li>Na segunda semana, voc&ecirc; aplica no seu ritmo. Tem dias que consegue fazer. Tem dias que n&atilde;o. Mas, pela primeira vez, voc&ecirc; entende o porqu&ecirc;. E isso j&aacute; muda a forma como voc&ecirc; se cobra.</li>
+            <li>Na terceira semana, voc&ecirc; assiste ao encontro, escuta outras pessoas passando por coisas parecidas e recebe direcionamentos que fazem sentido pra sua realidade, sem precisar se expor.</li>
+            <li>Na &uacute;ltima semana, voc&ecirc; olha para o m&ecirc;s e percebe o que funcionou, o que te drenou, o que precisa mudar e, principalmente, que voc&ecirc; n&atilde;o est&aacute; mais no mesmo ponto que come&ccedil;ou.</li>
+          </ol>
           <p class="large-line">N&atilde;o porque fez tudo perfeito. Mas porque come&ccedil;ou a funcionar de um jeito poss&iacute;vel.</p>
         </div>
       </section>
@@ -1239,20 +1380,20 @@
       </section>
 
       <section aria-labelledby="condicoes-title">
-        <div class="split-layout">
-          <div class="copy-stack">
-            <h2 id="condicoes-title">A Jornada M5C &eacute; um processo cont&iacute;nuo.</h2>
-            <p>Isso significa que voc&ecirc; pode entrar em qualquer momento, sem precisar esperar uma &ldquo;turma abrir&rdquo; ou come&ccedil;ar do zero.</p>
-            <p>Voc&ecirc; acessa a trilha respeitando o seu ritmo e pode iniciar a partir do ponto mais adequado para o seu momento atual.</p>
+        <div class="continuous-block">
+          <h2 id="condicoes-title">A Jornada M5C &eacute; um processo cont&iacute;nuo.</h2>
+          <div class="continuous-card">
+            <div class="continuous-text">
+              <p>Isso significa que voc&ecirc; pode <strong>entrar em qualquer momento</strong>, sem precisar esperar uma &ldquo;turma abrir&rdquo; ou come&ccedil;ar do zero.</p>
+              <p>Voc&ecirc; acessa a trilha <strong>respeitando o seu ritmo</strong> e pode iniciar a partir do ponto mais adequado para o seu momento atual.</p>
+              <p>Voc&ecirc; n&atilde;o precisa estar &ldquo;no momento perfeito&rdquo;, ter energia alta para come&ccedil;ar ou acompanhar o ritmo de outras pessoas.</p>
+              <p>A mentoria foi estruturada justamente para a <strong>vida real</strong>: com oscila&ccedil;&otilde;es de energia, dias mais dif&iacute;ceis e necessidade de adapta&ccedil;&atilde;o.</p>
+              <p>Voc&ecirc; avan&ccedil;a com base no seu <strong>n&iacute;vel de energia</strong>, na sua capacidade no momento e no seu ritmo de processamento.</p>
+            </div>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#oferta">Quero participar da Jornada M5C</a>
+            </div>
           </div>
-          <div class="copy-stack">
-            <p>Voc&ecirc; n&atilde;o precisa estar &ldquo;no momento perfeito&rdquo;, ter energia alta para come&ccedil;ar ou acompanhar o ritmo de outras pessoas.</p>
-            <p>A mentoria foi estruturada justamente para a vida real: com oscila&ccedil;&otilde;es de energia, dias mais dif&iacute;ceis e necessidade de adapta&ccedil;&atilde;o.</p>
-            <p>Voc&ecirc; avan&ccedil;a com base no seu n&iacute;vel de energia, na sua capacidade no momento e no seu ritmo de processamento.</p>
-          </div>
-        </div>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#oferta">Quero participar da Jornada M5C</a>
         </div>
       </section>
 
@@ -1430,4 +1571,3 @@
     </script>
   </body>
 </html>
-
