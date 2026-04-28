@@ -786,6 +786,92 @@
         line-height: 1.22 !important;
       }
 
+      .traits-grid,
+      .work-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .traits-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .trait-card {
+        min-height: 164px;
+      }
+
+      .trait-card h3 {
+        color: var(--black);
+        font-size: 1rem;
+        text-transform: uppercase;
+      }
+
+      .trait-card p {
+        margin-bottom: 0;
+      }
+
+      .trait-note,
+      .guarantee-box {
+        margin-top: 24px;
+        padding: 26px;
+        border-radius: var(--radius);
+      }
+
+      .trait-note {
+        border: 1px solid rgba(242, 106, 33, 0.34);
+        background: var(--soft-2);
+      }
+
+      .trait-note p,
+      .guarantee-box p {
+        margin: 0;
+      }
+
+      .trait-note p + p,
+      .guarantee-box p + p {
+        margin-top: 10px;
+      }
+
+      .work-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .work-card h3 {
+        margin-bottom: 12px;
+      }
+
+      .guarantee-box {
+        display: grid;
+        grid-template-columns: 0.72fr 1.28fr;
+        gap: 28px;
+        align-items: center;
+        border: 1px solid var(--line);
+        background: var(--white);
+        box-shadow: 0 18px 42px rgba(23, 23, 23, 0.1);
+      }
+
+      .guarantee-seal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--orange);
+        color: var(--black);
+        text-align: center;
+        font-size: 2.9rem;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .guarantee-seal span {
+        display: block;
+        margin-top: 4px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+      }
+
       .mini-section h2,
       .mini-section h3 {
         margin-bottom: 28px;
@@ -858,7 +944,10 @@
         .offer-layout,
         .authority-layout,
         .feature-grid,
-        .expect-grid {
+        .expect-grid,
+        .traits-grid,
+        .work-grid,
+        .guarantee-box {
           grid-template-columns: 1fr;
         }
 
@@ -881,6 +970,11 @@
 
         .price-panel {
           max-width: 460px;
+        }
+
+        .guarantee-seal {
+          width: 210px;
+          max-width: 100%;
         }
 
         h1 {
@@ -1263,6 +1357,113 @@
         </div>
       </section>
 
+      <section aria-labelledby="tracos-title">
+        <div class="section-head">
+          <p class="eyebrow dark">13 tra&ccedil;os trabalhados em 2026</p>
+          <h2 id="tracos-title">Tra&ccedil;os aut&iacute;sticos que a Jornada M5C te apoia para aprender a lidar</h2>
+          <p>A cada etapa, voc&ecirc; aprende estrat&eacute;gias pr&aacute;ticas para reconhecer seu funcionamento, reduzir sobrecargas e construir respostas mais poss&iacute;veis para a vida real.</p>
+        </div>
+
+        <div class="traits-grid">
+          <article class="card trait-card">
+            <span class="label">Rumina&ccedil;&atilde;o</span>
+            <h3>Looping mental</h3>
+            <p>Gerenciar rumina&ccedil;&atilde;o mental e pensamentos intrusivos.</p>
+          </article>
+          <article class="card trait-card">
+            <span class="label">Rigidez cognitiva</span>
+            <h3>Transi&ccedil;&otilde;es</h3>
+            <p>Fazer transi&ccedil;&otilde;es entre tarefas e ambientes com mais facilidade.</p>
+          </article>
+          <article class="card trait-card">
+            <span class="label">Alexitimia e interocep&ccedil;&atilde;o</span>
+            <h3>Percep&ccedil;&atilde;o interna</h3>
+            <p>Desenvolver autoconhecimento profundo do seu funcionamento, aprender a se perceber e identificar suas emo&ccedil;&otilde;es.</p>
+          </article>
+          <article class="card trait-card">
+            <span class="label">Desregula&ccedil;&atilde;o</span>
+            <h3>Emo&ccedil;&otilde;es e est&iacute;mulos</h3>
+            <p>Regular emo&ccedil;&otilde;es e est&iacute;mulos sensoriais com mais previsibilidade.</p>
+          </article>
+          <article class="card trait-card">
+            <span class="label">Desorganiza&ccedil;&atilde;o</span>
+            <h3>Pensamento e vida</h3>
+            <p>Organizar seu tempo, sua vida e seus pensamentos de forma mais sustent&aacute;vel.</p>
+          </article>
+          <article class="card trait-card">
+            <span class="label">Hiperfoco</span>
+            <h3>Altern&acirc;ncia de foco</h3>
+            <p>Lidar com hiperfoco e dificuldade de alternar o foco sem se destruir depois.</p>
+          </article>
+          <article class="card trait-card">
+            <span class="label">Mascaramento</span>
+            <h3>Menos masking</h3>
+            <p>Reduzir o masking e reconhecer o custo de funcionar apagando suas necessidades.</p>
+          </article>
+          <article class="card trait-card">
+            <span class="label">In&eacute;rcia autista</span>
+            <h3>Iniciar tarefas</h3>
+            <p>Vencer a in&eacute;rcia autista e iniciar tarefas com mais consist&ecirc;ncia.</p>
+          </article>
+          <article class="card trait-card">
+            <span class="label">Perda energ&eacute;tica</span>
+            <h3>Sobrecarga e exaust&atilde;o</h3>
+            <p>Gerenciar sua energia para ter mais vitalidade no dia a dia.</p>
+          </article>
+          <article class="card trait-card">
+            <span class="label">Hiper empatia</span>
+            <h3>Prote&ccedil;&atilde;o emocional</h3>
+            <p>Proteger-se da hiper empatia e da &ldquo;contamina&ccedil;&atilde;o&rdquo; emocional.</p>
+          </article>
+          <article class="card trait-card">
+            <span class="label">Meltdown</span>
+            <h3>Autocontrole</h3>
+            <p>Desenvolver autocontrole e estrat&eacute;gias de resposta antes, durante e depois da crise.</p>
+          </article>
+          <article class="card trait-card">
+            <span class="label">D&iacute;vidas</span>
+            <h3>Gest&atilde;o financeira</h3>
+            <p>N&atilde;o &eacute; um tra&ccedil;o em si, mas pode ser consequ&ecirc;ncia de viver sem estrat&eacute;gias. Voc&ecirc; aprende caminhos para melhorar a gest&atilde;o financeira.</p>
+          </article>
+          <article class="card trait-card">
+            <span class="label">Sobrecarga sensorial</span>
+            <h3>Est&iacute;mulos do ambiente</h3>
+            <p>Construir estrat&eacute;gias para lidar com a sobrecarga sensorial no cotidiano.</p>
+          </article>
+        </div>
+
+        <div class="trait-note">
+          <p><strong>Total em 2026:</strong> 13 tra&ccedil;os ao longo de 8 meses de Jornada, de maio a dezembro.</p>
+          <p><strong>Em 2027:</strong> a Jornada aumenta para 15 tra&ccedil;os, em 10 meses de acompanhamento, de mar&ccedil;o a dezembro.</p>
+        </div>
+      </section>
+
+      <section class="soft-section" aria-labelledby="trabalho-title">
+        <div class="section-head">
+          <p class="eyebrow dark">O que vamos trabalhar juntos</p>
+          <h2 id="trabalho-title">Da sobrecarga mental para um funcionamento mais poss&iacute;vel</h2>
+        </div>
+
+        <div class="work-grid">
+          <article class="card work-card">
+            <h3>Pensamentos e sobrecarga mental</h3>
+            <p>Voc&ecirc; vai aprender a lidar com pensamentos repetitivos, rumina&ccedil;&atilde;o e dificuldade de sair do looping mental que te prende e drena sua energia.</p>
+          </article>
+          <article class="card work-card">
+            <h3>Emo&ccedil;&otilde;es e intensidade interna</h3>
+            <p>Voc&ecirc; vai entender como lidar com a intensidade emocional, confus&atilde;o sobre o que sente e o impacto das rela&ccedil;&otilde;es na sua energia.</p>
+          </article>
+          <article class="card work-card">
+            <h3>A&ccedil;&atilde;o e dificuldade de execu&ccedil;&atilde;o</h3>
+            <p>Voc&ecirc; vai trabalhar as travas para iniciar tarefas, dificuldade de manter consist&ecirc;ncia e os ciclos de come&ccedil;ar e n&atilde;o sustentar.</p>
+          </article>
+          <article class="card work-card">
+            <h3>Energia e sobrecarga no dia a dia</h3>
+            <p>Voc&ecirc; vai aprender a identificar seu limite, gerenciar sua energia e reduzir o impacto da sobrecarga sensorial e emocional.</p>
+          </article>
+        </div>
+      </section>
+
       <section class="soft-section timeline-section" aria-labelledby="pratica-title">
         <div class="section-head">
           <h2 id="pratica-title">O que voc&ecirc; encontra na mentoria</h2>
@@ -1390,6 +1591,24 @@
               <p>A mentoria foi estruturada justamente para a <strong>vida real</strong>: com oscila&ccedil;&otilde;es de energia, dias mais dif&iacute;ceis e necessidade de adapta&ccedil;&atilde;o.</p>
               <p>Voc&ecirc; avan&ccedil;a com base no seu <strong>n&iacute;vel de energia</strong>, na sua capacidade no momento e no seu ritmo de processamento.</p>
             </div>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Quero participar da Jornada M5C</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="soft-section" id="garantia" aria-labelledby="garantia-title">
+        <div class="guarantee-box">
+          <div class="guarantee-seal" aria-hidden="true">
+            7
+            <span>dias</span>
+          </div>
+          <div>
+            <p class="eyebrow dark">Garantia</p>
+            <h2 id="garantia-title">Voc&ecirc; pode entrar com tranquilidade.</h2>
+            <p>Depois da sua inscri&ccedil;&atilde;o, voc&ecirc; tem 7 dias para acessar a Jornada M5C, conhecer a proposta por dentro e sentir se esse &eacute; o momento certo para voc&ecirc;.</p>
+            <p>Se dentro desse prazo voc&ecirc; perceber que n&atilde;o faz sentido continuar, pode solicitar o reembolso pela plataforma de compra, sem precisar se justificar.</p>
             <div class="cta-row">
               <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Quero participar da Jornada M5C</a>
             </div>
