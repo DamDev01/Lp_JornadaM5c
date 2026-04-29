@@ -545,6 +545,11 @@ input[type="radio"] {
   margin-top: 10px;
 }
 
+.price-panel .btn.full {
+  padding-inline: 12px;
+  white-space: nowrap;
+}
+
 .price-panel small {
   display: block;
   margin-top: 14px;
@@ -694,6 +699,10 @@ input[type="radio"] {
 
   .btn {
     width: 100%;
+  }
+
+  .price-panel .btn.full {
+    font-size: 0.84rem;
   }
 
   .signal-list {
