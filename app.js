@@ -5,7 +5,7 @@ const faqItems = document.querySelectorAll(".faq-item");
 
 const paths = {
   ready: {
-    title: "Entrar na Jornada M5C",
+    title: "Entrar na Jornada: Mentoria em TO",
     text: "Você pode ir direto para a oferta e começar pelo primeiro passo guiado.",
     href: "#oferta",
     cta: "Ver como entrar"
