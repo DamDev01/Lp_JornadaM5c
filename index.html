@@ -346,6 +346,91 @@
         background: var(--soft);
       }
 
+      .video-section {
+        scroll-margin-top: 78px;
+      }
+
+      .video-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+        gap: 34px;
+        align-items: center;
+      }
+
+      .video-copy p {
+        max-width: 560px;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .video-frame {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
+        border-radius: var(--radius);
+        background: var(--black);
+        box-shadow: 0 22px 52px rgba(23, 23, 23, 0.18);
+      }
+
+      .video-frame iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .video-poster {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        width: 100%;
+        border: 0;
+        padding: 0;
+        color: var(--white);
+        background: var(--black);
+        cursor: pointer;
+      }
+
+      .video-poster::before,
+      .video-poster::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+      }
+
+      .video-poster::before {
+        background: url("https://img.youtube.com/vi/fUkxNJcHLJM/maxresdefault.jpg") center / cover;
+        filter: blur(14px);
+        transform: scale(1.08);
+        opacity: 0.78;
+      }
+
+      .video-poster::after {
+        background: rgba(0, 0, 0, 0.32);
+      }
+
+      .video-play {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        place-items: center;
+        width: 76px;
+        height: 76px;
+        border-radius: 50%;
+        background: var(--orange);
+        color: var(--black);
+        font-size: 2rem;
+        line-height: 1;
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3);
+        transition: transform 160ms ease, background 160ms ease;
+      }
+
+      .video-poster:hover .video-play,
+      .video-poster:focus-visible .video-play {
+        transform: scale(1.06);
+        background: #ff7a2f;
+      }
+
       .dark-section,
       .final-cta {
         background: var(--black);
@@ -948,6 +1033,7 @@
         .split-layout,
         .offer-layout,
         .authority-layout,
+        .video-layout,
         .feature-grid,
         .expect-grid,
         .traits-grid,
@@ -1113,12 +1199,27 @@
 
           <div class="hero-actions" aria-label="A&ccedil;&otilde;es principais">
             <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Quero participar da Jornada: Mentoria em TO</a>
-            <a class="btn btn-outline" href="https://youtu.be/fUkxNJcHLJM">Assistir etapas gratuitas</a>
+            <a class="btn btn-outline" href="#video-gratuito">Assistir etapas gratuitas</a>
           </div>
           <p class="hero-note">
             Se voc&ecirc; prefere acompanhar mais de perto antes de decidir, voc&ecirc; tamb&eacute;m pode
             <a class="discreet-link" href="https://chat.whatsapp.com/CtPE3UgoV2SKv9xSieZ1lf">entrar na comunidade</a>.
           </p>
+        </div>
+      </section>
+
+      <section class="soft-section video-section" id="video-gratuito" aria-labelledby="video-title">
+        <div class="video-layout">
+          <div class="video-copy">
+            <p class="eyebrow dark">Etapas gratuitas</p>
+            <h2 id="video-title">Assista antes de decidir</h2>
+            <p>Veja as etapas gratuitas da Jornada e entenda como a metodologia pode te ajudar a reconhecer sobrecargas, organizar energia e criar estrat&eacute;gias mais compat&iacute;veis com o seu funcionamento.</p>
+          </div>
+          <div class="video-frame" data-video-src="https://www.youtube.com/embed/fUkxNJcHLJM?autoplay=1&rel=0">
+            <button class="video-poster" type="button" aria-label="Reproduzir etapas gratuitas">
+              <span class="video-play" aria-hidden="true">&#9658;</span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -1337,7 +1438,7 @@
             <h3>8x de R$ 197</h3>
             <p>Total do ciclo: R$ 1.576</p>
             <a class="btn btn-primary full" href="https://pay.hotmart.com/C105523440P">Quero participar agora</a>
-            <a class="btn btn-light full" href="https://youtu.be/fUkxNJcHLJM">Assistir etapas gratuitas</a>
+            <a class="btn btn-light full" href="#video-gratuito">Assistir etapas gratuitas</a>
             <small>Voc&ecirc; pode entrar direto na mentoria ou come&ccedil;ar pelas etapas gratuitas se precisar de mais tempo.</small>
           </aside>
         </div>
@@ -1701,7 +1802,7 @@
           <p>O que voc&ecirc; precisa &eacute; de um caminho poss&iacute;vel, que respeite seu ritmo, sua energia e seu funcionamento.</p>
           <div class="cta-row">
             <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Quero participar da Jornada: Mentoria em TO</a>
-            <a class="btn btn-outline" href="https://youtu.be/fUkxNJcHLJM">Assistir etapas gratuitas</a>
+            <a class="btn btn-outline" href="#video-gratuito">Assistir etapas gratuitas</a>
           </div>
           <p class="hero-note">
             Se voc&ecirc; prefere acompanhar mais de perto antes de decidir, voc&ecirc; tamb&eacute;m pode
@@ -1722,6 +1823,7 @@
       const testimonialTrack = document.querySelector("[data-testimonial-track]");
       const testimonialPrevButtons = document.querySelectorAll("[data-testimonial-prev]");
       const testimonialNextButtons = document.querySelectorAll("[data-testimonial-next]");
+      const videoFrame = document.querySelector("[data-video-src]");
 
       function updateHeader() {
         header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -1738,6 +1840,21 @@
           button.setAttribute("aria-expanded", String(isOpen));
         });
       });
+
+      if (videoFrame) {
+        const videoPoster = videoFrame.querySelector(".video-poster");
+
+        videoPoster.addEventListener("click", () => {
+          const iframe = document.createElement("iframe");
+
+          iframe.src = videoFrame.dataset.videoSrc;
+          iframe.title = "Etapas gratuitas da Jornada: Mentoria em TO";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.allowFullscreen = true;
+
+          videoFrame.replaceChildren(iframe);
+        });
+      }
 
       if (testimonialTrack) {
         const testimonialCards = Array.from(testimonialTrack.querySelectorAll(".testimonial-card"));
