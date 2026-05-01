@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -130,6 +130,7 @@
 
       .hero-image {
         object-fit: cover;
+        object-position: 64% center;
       }
 
       .hero-overlay {
@@ -456,6 +457,42 @@
         color: rgba(255, 255, 255, 0.78);
       }
 
+      .illustrated-copy,
+      .transition-layout,
+      .story-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.98fr) minmax(260px, 0.62fr);
+        gap: 46px;
+        align-items: center;
+      }
+
+      .transition-layout .copy-stack {
+        max-width: 660px;
+      }
+
+      .transition-photo {
+        min-height: 360px;
+        box-shadow: 0 24px 58px rgba(0, 0, 0, 0.32);
+      }
+
+      .story-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.5fr);
+      }
+
+      .section-photo {
+        width: 100%;
+        min-height: 310px;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border-radius: var(--radius);
+        box-shadow: 0 18px 42px rgba(23, 23, 23, 0.13);
+      }
+
+      .split-visual {
+        margin-top: 34px;
+        max-width: 420px;
+      }
+
       .large-line {
         color: var(--ink) !important;
         font-size: 2.25rem !important;
@@ -533,7 +570,8 @@
         gap: 18px;
       }
 
-      .testimonial-controls {
+      .testimonial-controls,
+      .plan-controls {
         display: flex;
         justify-content: flex-end;
         gap: 8px;
@@ -812,36 +850,130 @@
         align-items: center;
       }
 
-      .price-panel {
-        padding: 26px;
+      .plans-panel {
+        display: grid;
+        gap: 18px;
+      }
+
+      .plans-panel > p {
+        color: rgba(255, 255, 255, 0.72);
+        margin: 0;
+      }
+
+      .plan-controls {
+        justify-content: flex-start;
+      }
+
+      .plan-controls .carousel-btn {
+        border-color: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+      }
+
+      .plans-carousel {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(255px, 1fr);
+        gap: 16px;
+        overflow-x: auto;
+        padding: 12px 4px 24px;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: thin;
+      }
+
+      .plan-card {
+        min-height: 330px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
         border-radius: var(--radius);
         background: var(--white);
         color: var(--black);
+        box-shadow: 0 24px 55px rgba(0, 0, 0, 0.32);
+        scroll-snap-align: start;
+        animation: floatPlan 5.5s ease-in-out infinite;
       }
 
-      .price-panel h3 {
-        margin: 12px 0 0;
-        font-size: 2.3rem;
+      .plan-card:nth-child(2) {
+        animation-delay: 0.35s;
       }
 
-      .price-panel p {
+      .plan-card:nth-child(3) {
+        animation-delay: 0.7s;
+      }
+
+      .plan-card:nth-child(4) {
+        animation-delay: 1.05s;
+      }
+
+      .plan-card.is-featured {
+        background: var(--orange);
+        border-color: var(--orange);
+      }
+
+      .plan-card .label {
+        margin-bottom: 16px;
+      }
+
+      .plan-card.is-featured .label {
+        color: var(--black);
+      }
+
+      .plan-card h3 {
+        margin: 0;
+        font-size: 1.45rem;
+        line-height: 1.1;
+      }
+
+      .plan-card .price {
+        margin: 18px 0 6px;
+        font-size: 2rem;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .plan-card .total {
         color: var(--muted);
+        font-size: 0.95rem;
       }
 
-      .price-panel .btn + .btn {
-        margin-top: 10px;
+      .plan-card.is-featured .total {
+        color: rgba(0, 0, 0, 0.72);
       }
 
-      .price-panel .btn.full {
+      .plan-card ul {
+        margin: 18px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .plan-card.is-featured ul {
+        color: rgba(0, 0, 0, 0.72);
+      }
+
+      .plan-card .btn {
+        width: 100%;
+        margin-top: 22px;
+        justify-content: center;
         padding-inline: 12px;
-        white-space: nowrap;
       }
 
-      .price-panel small {
-        display: block;
-        margin-top: 14px;
-        color: var(--muted);
-        line-height: 1.45;
+      @keyframes floatPlan {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-8px);
+        }
       }
 
       .mini-section + .mini-section {
@@ -950,7 +1082,7 @@
         background: var(--orange);
         color: var(--black);
         text-align: center;
-        font-size: 2.9rem;
+        font-size: 4.4rem;
         font-weight: 900;
         line-height: 1;
       }
@@ -960,6 +1092,11 @@
         margin-top: 4px;
         font-size: 0.82rem;
         text-transform: uppercase;
+      }
+
+      .guarantee-highlight {
+        color: var(--black);
+        font-weight: 900;
       }
 
       .mini-section h2,
@@ -1034,6 +1171,9 @@
         .offer-layout,
         .authority-layout,
         .video-layout,
+        .illustrated-copy,
+        .transition-layout,
+        .story-layout,
         .feature-grid,
         .expect-grid,
         .traits-grid,
@@ -1059,8 +1199,8 @@
           min-height: 320px;
         }
 
-        .price-panel {
-          max-width: 460px;
+        .plans-carousel {
+          grid-auto-columns: minmax(260px, 360px);
         }
 
         .guarantee-seal {
@@ -1078,6 +1218,11 @@
 
         .large-line {
           font-size: 1.9rem !important;
+        }
+
+        .section-photo {
+          min-height: 260px;
+          max-width: 520px;
         }
       }
 
@@ -1103,6 +1248,10 @@
         .hero {
           min-height: 100vh;
           padding: 104px 16px 38px;
+        }
+
+        .hero-image {
+          object-position: 68% center;
         }
 
         section {
@@ -1132,7 +1281,7 @@
           width: 100%;
         }
 
-        .price-panel .btn.full {
+        .plan-card .btn {
           font-size: 0.84rem;
         }
 
@@ -1154,6 +1303,10 @@
 
         .testimonial-track {
           grid-auto-columns: 88%;
+        }
+
+        .section-photo {
+          min-height: 220px;
         }
       }
     </style>
@@ -1178,15 +1331,15 @@
       <section class="hero" id="inicio" aria-labelledby="hero-title">
         <img
           class="hero-image"
-          src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80"
-          alt="Pessoa trabalhando em um ambiente calmo com notebook e caderno"
+          src="banner.png"
+          alt="Banner da Jornada com arte abstrata em tons de laranja e retrato da mentora"
         />
         <div class="hero-overlay" aria-hidden="true"></div>
         <div class="hero-content">
           <p class="eyebrow">Jornada: Mentoria em TO &mdash; Mentoria de Terapia Ocupacional para Burnout Autista</p>
-          <p class="eyebrow">O esgotamento n&atilde;o precisa ser seu normal</p>
-          <h1 id="hero-title">Se voc&ecirc; est&aacute; esgotado, talvez n&atilde;o falte disciplina Falte uma metodologia pensada para seu funcionamento at&iacute;pico</h1>
-          <p class="hero-copy">Aprenda a lidar com o burnout autista mesmo que precise continuar trabalhando</p>
+          <h1 id="hero-title">O esgotamento n&atilde;o precisa ser seu normal</h1>
+          <p class="hero-copy">Se voc&ecirc; est&aacute; esgotado, talvez n&atilde;o falte disciplina. Falte uma metodologia pensada para seu funcionamento at&iacute;pico.</p>
+          <p class="hero-copy">Aprenda a lidar com o burnout autista mesmo que precise continuar trabalhando.</p>
 
           <div class="learn-box" aria-label="Aprendizados gratuitos">
             <strong>Assista &agrave;s etapas gratuitas da mentoria e aprenda 3 coisas essenciais:</strong>
@@ -1201,36 +1354,134 @@
             <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Quero participar da Jornada: Mentoria em TO</a>
             <a class="btn btn-outline" href="#video-gratuito">Assistir etapas gratuitas</a>
           </div>
-          <p class="hero-note">
-            Se voc&ecirc; prefere acompanhar mais de perto antes de decidir, voc&ecirc; tamb&eacute;m pode
-            <a class="discreet-link" href="https://chat.whatsapp.com/CtPE3UgoV2SKv9xSieZ1lf">entrar na comunidade</a>.
-          </p>
         </div>
       </section>
 
       <section class="soft-section video-section" id="video-gratuito" aria-labelledby="video-title">
         <div class="video-layout">
           <div class="video-copy">
-            <p class="eyebrow dark">Etapas gratuitas</p>
+            <p class="eyebrow dark">Etapa gratuita</p>
             <h2 id="video-title">Assista antes de decidir</h2>
-            <p>Veja as etapas gratuitas da Jornada e entenda como a metodologia pode te ajudar a reconhecer sobrecargas, organizar energia e criar estrat&eacute;gias mais compat&iacute;veis com o seu funcionamento.</p>
+            <p>Veja a etapa gratuita da Jornada e entenda como a metodologia pode te ajudar a reconhecer sobrecargas, organizar energia e criar estrat&eacute;gias mais compat&iacute;veis com o seu funcionamento.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Quero participar</a>
+            </div>
           </div>
           <div class="video-frame" data-video-src="https://www.youtube.com/embed/fUkxNJcHLJM?autoplay=1&rel=0">
-            <button class="video-poster" type="button" aria-label="Reproduzir etapas gratuitas">
+            <button class="video-poster" type="button" aria-label="Reproduzir etapa gratuita">
               <span class="video-play" aria-hidden="true">&#9658;</span>
             </button>
           </div>
         </div>
       </section>
 
+      <section id="prova" aria-labelledby="prova-title">
+        <div class="section-head">
+          <h2 id="prova-title">Pessoas que aprenderam a viver melhor com o meu m&eacute;todo</h2>
+          <p>Relatos de pessoas que come&ccedil;aram a organizar energia, rotina e limites com mais clareza dentro da Jornada: Mentoria em TO.</p>
+        </div>
+
+        <div class="testimonial-shell">
+          <div class="testimonial-controls" aria-label="Controles dos depoimentos">
+            <button class="carousel-btn" type="button" data-testimonial-prev aria-label="Depoimento anterior">&lsaquo;</button>
+            <button class="carousel-btn" type="button" data-testimonial-next aria-label="Pr&oacute;ximo depoimento">&rsaquo;</button>
+          </div>
+
+          <div class="testimonial-track" data-testimonial-track tabindex="0" aria-label="Carrossel de depoimentos">
+            <article class="testimonial-card">
+              <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <blockquote>&ldquo;Consegui organizar minha energia sem me for&ccedil;ar e parei de achar que tudo era falta de esfor&ccedil;o.&rdquo;</blockquote>
+              <div class="testimonial-author">
+                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
+                <div>
+                  <strong>Participante da Jornada</strong>
+                  <span>5 estrelas</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <blockquote>&ldquo;Parei de entrar em colapso depois de dias produtivos porque comecei a reconhecer meus sinais antes.&rdquo;</blockquote>
+              <div class="testimonial-author">
+                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
+                <div>
+                  <strong>Participante da Jornada</strong>
+                  <span>5 estrelas</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <blockquote>&ldquo;Hoje consigo me respeitar sem culpa. Entendi que eu precisava de estrat&eacute;gia, n&atilde;o de mais cobran&ccedil;a.&rdquo;</blockquote>
+              <div class="testimonial-author">
+                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
+                <div>
+                  <strong>Participante da Jornada</strong>
+                  <span>5 estrelas</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 4 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+              <blockquote>&ldquo;As orienta&ccedil;&otilde;es me ajudaram a perceber o que drenava minha energia antes de eu chegar no limite.&rdquo;</blockquote>
+              <div class="testimonial-author">
+                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
+                <div>
+                  <strong>Participante da Jornada</strong>
+                  <span>4 estrelas</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <blockquote>&ldquo;Ter um caminho com passos menores fez diferen&ccedil;a. Pela primeira vez n&atilde;o senti que precisava acompanhar tudo perfeitamente.&rdquo;</blockquote>
+              <div class="testimonial-author">
+                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
+                <div>
+                  <strong>Participante da Jornada</strong>
+                  <span>5 estrelas</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 4 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+              <blockquote>&ldquo;Eu estava tentando organizar rotina com ferramentas que n&atilde;o conversavam comigo. Aqui consegui entender meu ritmo.&rdquo;</blockquote>
+              <div class="testimonial-author">
+                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
+                <div>
+                  <strong>Participante da Jornada</strong>
+                  <span>4 estrelas</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Quero participar</a>
+          </div>
+        </div>
+      </section>
+
       <section class="soft-section" id="identificacao" aria-labelledby="identificacao-title">
-        <div class="copy-stack">
-          <h2 id="identificacao-title">Voc&ecirc; come&ccedil;a o dia tentando dar conta de tudo&hellip;</h2>
-          <p class="large-line">mas termina exausta.</p>
-          <p>Com a sensa&ccedil;&atilde;o de n&atilde;o ser &ldquo;&uacute;til o suficiente&rdquo;.</p>
-          <p>Sem clareza dos seus limites.</p>
-          <p>Sem saber o que &eacute; poss&iacute;vel sustentar hoje.</p>
-          <p>E o pior: mesmo tentando descansar, se organizar e &ldquo;fazer certo&rdquo;, nada parece funcionar por muito tempo.</p>
+        <div class="illustrated-copy">
+          <div class="copy-stack">
+            <h2 id="identificacao-title">Voc&ecirc; come&ccedil;a o dia tentando dar conta de tudo&hellip;</h2>
+            <p class="large-line">mas termina exausta.</p>
+            <p>Com a sensa&ccedil;&atilde;o de n&atilde;o ser &ldquo;&uacute;til o suficiente&rdquo;.</p>
+            <p>Sem clareza dos seus limites.</p>
+            <p>Sem saber o que &eacute; poss&iacute;vel sustentar hoje.</p>
+            <p>E o pior: mesmo tentando descansar, se organizar e &ldquo;fazer certo&rdquo;, nada parece funcionar por muito tempo.</p>
+          </div>
+          <img
+            class="section-photo"
+            src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=900&q=80"
+            alt="Mesa de trabalho com caderno aberto e x&iacute;cara, representando organiza&ccedil;&atilde;o da rotina"
+            loading="lazy"
+          />
         </div>
       </section>
 
@@ -1238,6 +1489,12 @@
         <div class="split-layout">
           <div>
             <h2 id="crenca-title">O problema n&atilde;o &eacute; esfor&ccedil;o</h2>
+            <img
+              class="section-photo split-visual"
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80"
+              alt="Pessoa analisando anota&ccedil;&otilde;es e gr&aacute;ficos para entender padr&otilde;es"
+              loading="lazy"
+            />
           </div>
           <div class="copy-stack">
             <p>E tamb&eacute;m n&atilde;o &eacute; falta de capacidade.</p>
@@ -1251,9 +1508,20 @@
       </section>
 
       <section class="dark-section" aria-labelledby="transicao-title">
-        <div class="copy-stack">
-          <h2 id="transicao-title">Voc&ecirc; n&atilde;o precisa se for&ccedil;ar mais</h2>
-          <p class="large-line">Precisa de um jeito de funcionar que respeite como voc&ecirc; funciona.</p>
+        <div class="transition-layout">
+          <div class="copy-stack">
+            <h2 id="transicao-title">Voc&ecirc; n&atilde;o precisa se for&ccedil;ar mais</h2>
+            <p class="large-line">Precisa de um jeito de funcionar que respeite como voc&ecirc; funciona.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Quero participar</a>
+            </div>
+          </div>
+          <img
+            class="section-photo transition-photo"
+            src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80"
+            alt="Pessoa em um momento de pausa e regula&ccedil;&atilde;o, respeitando o pr&oacute;prio ritmo"
+            loading="lazy"
+          />
         </div>
       </section>
 
@@ -1280,12 +1548,20 @@
       </section>
 
       <section class="soft-section" aria-labelledby="dor-title">
-        <div class="copy-stack">
-          <h2 id="dor-title">Voc&ecirc; tenta dar conta de tudo&hellip; mas vive no limite</h2>
-          <p>O tempo escapa. A energia acaba. E a sensa&ccedil;&atilde;o de incapacidade s&oacute; aumenta.</p>
-          <p>&Eacute; exatamente por isso que essa mentoria existe.</p>
-          <p>Para te dar um caminho l&oacute;gico, aplic&aacute;vel na vida real, que devolve clareza e dire&ccedil;&atilde;o.</p>
-          <p class="large-line">Sem exigir que voc&ecirc; vire outra pessoa. E sem promessas irreais.</p>
+        <div class="illustrated-copy">
+          <div class="copy-stack">
+            <h2 id="dor-title">Voc&ecirc; tenta dar conta de tudo&hellip; mas vive no limite</h2>
+            <p>O tempo escapa. A energia acaba. E a sensa&ccedil;&atilde;o de incapacidade s&oacute; aumenta.</p>
+            <p>&Eacute; exatamente por isso que essa mentoria existe.</p>
+            <p>Para te dar um caminho l&oacute;gico, aplic&aacute;vel na vida real, que devolve clareza e dire&ccedil;&atilde;o.</p>
+            <p class="large-line">Sem exigir que voc&ecirc; vire outra pessoa. E sem promessas irreais.</p>
+          </div>
+          <img
+            class="section-photo"
+            src="https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&w=900&q=80"
+            alt="Pessoa cansada em uma mesa de trabalho, representando sobrecarga e limite"
+            loading="lazy"
+          />
         </div>
       </section>
 
@@ -1308,6 +1584,9 @@
             <p>Para recuperar autocuidado e produtividade com mais seguran&ccedil;a.</p>
           </article>
         </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Quero participar</a>
+        </div>
       </section>
 
       <section class="soft-section" aria-labelledby="autoridade-title">
@@ -1329,98 +1608,11 @@
         </div>
       </section>
 
-      <section id="prova" aria-labelledby="prova-title">
-        <div class="section-head">
-          <h2 id="prova-title">Depoimentos</h2>
-          <p>Relatos de pessoas que come&ccedil;aram a organizar energia, rotina e limites com mais clareza dentro da Jornada: Mentoria em TO.</p>
-        </div>
-
-        <div class="testimonial-shell">
-          <div class="testimonial-controls" aria-label="Controles dos depoimentos">
-            <button class="carousel-btn" type="button" data-testimonial-prev aria-label="Depoimento anterior">&lsaquo;</button>
-            <button class="carousel-btn" type="button" data-testimonial-next aria-label="Pr&oacute;ximo depoimento">&rsaquo;</button>
-          </div>
-
-          <div class="testimonial-track" data-testimonial-track tabindex="0" aria-label="Carrossel de depoimentos">
-            <article class="testimonial-card">
-              <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 5 de 5 estrelas">★★★★★</div>
-              <blockquote>&ldquo;Consegui organizar minha energia sem me for&ccedil;ar e parei de achar que tudo era falta de esfor&ccedil;o.&rdquo;</blockquote>
-              <div class="testimonial-author">
-                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
-                <div>
-                  <strong>Participante da Jornada</strong>
-                  <span>5 estrelas</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="testimonial-card">
-              <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 5 de 5 estrelas">★★★★★</div>
-              <blockquote>&ldquo;Parei de entrar em colapso depois de dias produtivos porque comecei a reconhecer meus sinais antes.&rdquo;</blockquote>
-              <div class="testimonial-author">
-                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
-                <div>
-                  <strong>Participante da Jornada</strong>
-                  <span>5 estrelas</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="testimonial-card">
-              <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 5 de 5 estrelas">★★★★★</div>
-              <blockquote>&ldquo;Hoje consigo me respeitar sem culpa. Entendi que eu precisava de estrat&eacute;gia, n&atilde;o de mais cobran&ccedil;a.&rdquo;</blockquote>
-              <div class="testimonial-author">
-                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
-                <div>
-                  <strong>Participante da Jornada</strong>
-                  <span>5 estrelas</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="testimonial-card">
-              <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 4 de 5 estrelas">★★★★☆</div>
-              <blockquote>&ldquo;As orienta&ccedil;&otilde;es me ajudaram a perceber o que drenava minha energia antes de eu chegar no limite.&rdquo;</blockquote>
-              <div class="testimonial-author">
-                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
-                <div>
-                  <strong>Participante da Jornada</strong>
-                  <span>4 estrelas</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="testimonial-card">
-              <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 5 de 5 estrelas">★★★★★</div>
-              <blockquote>&ldquo;Ter um caminho com passos menores fez diferen&ccedil;a. Pela primeira vez n&atilde;o senti que precisava acompanhar tudo perfeitamente.&rdquo;</blockquote>
-              <div class="testimonial-author">
-                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
-                <div>
-                  <strong>Participante da Jornada</strong>
-                  <span>5 estrelas</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="testimonial-card">
-              <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 4 de 5 estrelas">★★★★☆</div>
-              <blockquote>&ldquo;Eu estava tentando organizar rotina com ferramentas que n&atilde;o conversavam comigo. Aqui consegui entender meu ritmo.&rdquo;</blockquote>
-              <div class="testimonial-author">
-                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
-                <div>
-                  <strong>Participante da Jornada</strong>
-                  <span>4 estrelas</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section class="dark-section" id="oferta" aria-labelledby="oferta-title">
         <div class="offer-layout">
           <div>
-            <h2 id="oferta-title">O que &eacute; a Jornada: Mentoria em TO</h2>
+            <p class="eyebrow">Conhe&ccedil;a nossos planos</p>
+            <h2 id="oferta-title">Escolha como participar da Jornada: Mentoria em TO</h2>
             <p>A Jornada: Mentoria em TO &eacute; uma mentoria estruturada de Terapia Ocupacional voltada para adultos autistas em burnout que precisam continuar funcionando na vida real.</p>
             <p>N&atilde;o &eacute; um curso te&oacute;rico. E tamb&eacute;m n&atilde;o &eacute; motivacional.</p>
             <p>&Eacute; um processo guiado para voc&ecirc; desenvolver habilidades pr&aacute;ticas que te ajudam a sair do ciclo de esgotamento e voltar a funcionar com mais estabilidade.</p>
@@ -1434,12 +1626,69 @@
             </ul>
           </div>
 
-          <aside class="price-panel" aria-label="Investimento">
-            <h3>8x de R$ 197</h3>
-            <p>Total do ciclo: R$ 1.576</p>
-            <a class="btn btn-primary full" href="https://pay.hotmart.com/C105523440P">Quero participar agora</a>
-            <a class="btn btn-light full" href="#video-gratuito">Assistir etapas gratuitas</a>
-            <small>Voc&ecirc; pode entrar direto na mentoria ou come&ccedil;ar pelas etapas gratuitas se precisar de mais tempo.</small>
+          <aside class="plans-panel" aria-label="Planos de investimento">
+            <p>Primeiro ciclo da comunidade: 8 meses. Pagamento &agrave; vista tem condi&ccedil;&otilde;es especiais de apresenta&ccedil;&atilde;o.</p>
+            <div class="plan-controls" aria-label="Controles do carrossel de planos">
+              <button class="carousel-btn" type="button" data-plan-prev aria-label="Plano anterior">&lsaquo;</button>
+              <button class="carousel-btn" type="button" data-plan-next aria-label="Pr&oacute;ximo plano">&rsaquo;</button>
+            </div>
+            <div class="plans-carousel" data-plan-track aria-label="Carrossel de planos">
+              <article class="plan-card">
+                <div>
+                  <span class="label">Valor integral</span>
+                  <h3>8x de R$ 197,00</h3>
+                  <div class="price">R$ 1.576,00</div>
+                  <div class="total">Primeiro ciclo completo: 8 meses</div>
+                  <ul>
+                    <li>Parcelamento limitado ao m&aacute;ximo.</li>
+                    <li>Ideal para entrar agora e acompanhar todo o ciclo.</li>
+                  </ul>
+                </div>
+                <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Comprar agora</a>
+              </article>
+
+              <article class="plan-card">
+                <div>
+                  <span class="label">Apresenta&ccedil;&atilde;o</span>
+                  <h3>Pacote de 3 meses</h3>
+                  <div class="price">R$ 531,90</div>
+                  <div class="total">10% OFF no pagamento &agrave; vista</div>
+                  <ul>
+                    <li>Valor base: R$ 591,00.</li>
+                    <li>Entrada mais curta para conhecer o m&eacute;todo.</li>
+                  </ul>
+                </div>
+                <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Comprar agora</a>
+              </article>
+
+              <article class="plan-card">
+                <div>
+                  <span class="label">Apresenta&ccedil;&atilde;o</span>
+                  <h3>Pacote de 6 meses</h3>
+                  <div class="price">R$ 945,60</div>
+                  <div class="total">20% OFF no pagamento &agrave; vista</div>
+                  <ul>
+                    <li>Valor base: R$ 1.182,00.</li>
+                    <li>Mais tempo para consolidar rotina e estrat&eacute;gias.</li>
+                  </ul>
+                </div>
+                <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Comprar agora</a>
+              </article>
+
+              <article class="plan-card is-featured">
+                <div>
+                  <span class="label">Melhor op&ccedil;&atilde;o</span>
+                  <h3>Pacote de 8 meses</h3>
+                  <div class="price">R$ 1.103,20</div>
+                  <div class="total">30% OFF no pagamento &agrave; vista</div>
+                  <ul>
+                    <li>Valor base: R$ 1.576,00.</li>
+                    <li>Acompanhamento completo do primeiro ciclo.</li>
+                  </ul>
+                </div>
+                <a class="btn btn-light" href="https://pay.hotmart.com/C105523440P">Comprar agora</a>
+              </article>
+            </div>
           </aside>
         </div>
       </section>
@@ -1605,7 +1854,7 @@
             </span>
             <div>
               <h3>Pr&aacute;tica no seu ritmo</h3>
-              <p>Voc&ecirc; aplica no seu tempo, com orienta&ccedil;&otilde;es simples. Pode trocar na comunidade, se quiser.</p>
+              <p>Voc&ecirc; aplica no seu tempo, com orienta&ccedil;&otilde;es simples e sem press&atilde;o para acompanhar tudo perfeitamente.</p>
             </div>
           </article>
           <article class="timeline-item">
@@ -1639,24 +1888,43 @@
       </section>
 
       <section class="soft-section" aria-labelledby="formato-title">
-        <div class="copy-stack rhythm-note">
-          <h2 id="formato-title">Voc&ecirc; n&atilde;o precisa acompanhar tudo perfeitamente</h2>
-          <p>Voc&ecirc; pode entrar em qualquer momento, retomar de onde parou, avan&ccedil;ar no seu ritmo e repetir etapas quando necess&aacute;rio.</p>
-          <p class="large-line">A estrutura existe para te guiar, n&atilde;o para te pressionar.</p>
+        <div class="illustrated-copy">
+          <div class="copy-stack rhythm-note">
+            <h2 id="formato-title">Voc&ecirc; n&atilde;o precisa acompanhar tudo perfeitamente</h2>
+            <p>Voc&ecirc; pode entrar em qualquer momento, retomar de onde parou, avan&ccedil;ar no seu ritmo e repetir etapas quando necess&aacute;rio.</p>
+            <p class="large-line">A estrutura existe para te guiar, n&atilde;o para te pressionar.</p>
+          </div>
+          <img
+            class="section-photo"
+            src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=900&q=80"
+            alt="Planejamento semanal em papel, representando avan&ccedil;o no pr&oacute;prio ritmo"
+            loading="lazy"
+          />
         </div>
       </section>
 
       <section aria-labelledby="story-title">
-        <div class="story-box">
-          <h2 id="story-title">Como isso acontece na pr&aacute;tica</h2>
-          <p>Imagina um cen&aacute;rio comum dentro da Jornada: voc&ecirc; come&ccedil;a o m&ecirc;s j&aacute; cansada, sem saber por onde organizar a rotina.</p>
-          <ol class="story-steps">
-            <li>Na primeira semana, voc&ecirc; assiste a aula e percebe algo simples: o que est&aacute; te drenando n&atilde;o &eacute; o que voc&ecirc; achava. Voc&ecirc; faz um primeiro ajuste pequeno. Nada radical. Algo poss&iacute;vel.</li>
-            <li>Na segunda semana, voc&ecirc; aplica no seu ritmo. Tem dias que consegue fazer. Tem dias que n&atilde;o. Mas, pela primeira vez, voc&ecirc; entende o porqu&ecirc;. E isso j&aacute; muda a forma como voc&ecirc; se cobra.</li>
-            <li>Na terceira semana, voc&ecirc; assiste ao encontro, escuta outras pessoas passando por coisas parecidas e recebe direcionamentos que fazem sentido pra sua realidade, sem precisar se expor.</li>
-            <li>Na &uacute;ltima semana, voc&ecirc; olha para o m&ecirc;s e percebe o que funcionou, o que te drenou, o que precisa mudar e, principalmente, que voc&ecirc; n&atilde;o est&aacute; mais no mesmo ponto que come&ccedil;ou.</li>
-          </ol>
-          <p class="large-line">N&atilde;o porque fez tudo perfeito. Mas porque come&ccedil;ou a funcionar de um jeito poss&iacute;vel.</p>
+        <div class="story-layout">
+          <div class="story-box">
+            <h2 id="story-title">Como isso acontece na pr&aacute;tica</h2>
+            <p>Imagina um cen&aacute;rio comum dentro da Jornada: voc&ecirc; come&ccedil;a o m&ecirc;s j&aacute; cansada, sem saber por onde organizar a rotina.</p>
+            <ol class="story-steps">
+              <li>Na primeira semana, voc&ecirc; assiste a aula e percebe algo simples: o que est&aacute; te drenando n&atilde;o &eacute; o que voc&ecirc; achava. Voc&ecirc; faz um primeiro ajuste pequeno. Nada radical. Algo poss&iacute;vel.</li>
+              <li>Na segunda semana, voc&ecirc; aplica no seu ritmo. Tem dias que consegue fazer. Tem dias que n&atilde;o. Mas, pela primeira vez, voc&ecirc; entende o porqu&ecirc;. E isso j&aacute; muda a forma como voc&ecirc; se cobra.</li>
+              <li>Na terceira semana, voc&ecirc; assiste ao encontro, escuta outras pessoas passando por coisas parecidas e recebe direcionamentos que fazem sentido pra sua realidade, sem precisar se expor.</li>
+              <li>Na &uacute;ltima semana, voc&ecirc; olha para o m&ecirc;s e percebe o que funcionou, o que te drenou, o que precisa mudar e, principalmente, que voc&ecirc; n&atilde;o est&aacute; mais no mesmo ponto que come&ccedil;ou.</li>
+            </ol>
+            <p class="large-line">N&atilde;o porque fez tudo perfeito. Mas porque come&ccedil;ou a funcionar de um jeito poss&iacute;vel.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Quero participar</a>
+            </div>
+          </div>
+          <img
+            class="section-photo"
+            src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80"
+            alt="Pessoas em uma conversa de orienta&ccedil;&atilde;o com materiais de apoio sobre a mesa"
+            loading="lazy"
+          />
         </div>
       </section>
 
@@ -1711,14 +1979,18 @@
       <section class="soft-section" id="garantia" aria-labelledby="garantia-title">
         <div class="guarantee-box">
           <div class="guarantee-seal" aria-hidden="true">
-            7
+            90
             <span>dias</span>
           </div>
           <div>
             <p class="eyebrow dark">Garantia</p>
-            <h2 id="garantia-title">Voc&ecirc; pode entrar com tranquilidade</h2>
-            <p>Depois da sua inscri&ccedil;&atilde;o, voc&ecirc; tem 7 dias para acessar a Jornada: Mentoria em TO, conhecer a proposta por dentro e sentir se esse &eacute; o momento certo para voc&ecirc;.</p>
-            <p>Se dentro desse prazo voc&ecirc; perceber que n&atilde;o faz sentido continuar, pode solicitar o reembolso pela plataforma de compra, sem precisar se justificar.</p>
+            <h2 id="garantia-title">Adquirindo 6 meses da Jornada</h2>
+            <ul class="check-list">
+              <li>Voc&ecirc; tem <strong class="guarantee-highlight">90 dias</strong> de experi&ecirc;ncia com o produto para aplicar o m&eacute;todo e perceber os primeiros movimentos de <strong>mudan&ccedil;a</strong>.</li>
+              <li>Se n&atilde;o perceber mudan&ccedil;a nesse per&iacute;odo, eu ofere&ccedil;o <strong>1 atendimento individual</strong> de <strong>20 minutos</strong> gratuitamente.</li>
+              <li>Depois disso, voc&ecirc; ainda tem <strong>mais 3 meses</strong> para dar continuidade &agrave; Jornada, garantindo seus <strong>6 ou 8 meses de trilha</strong>.</li>
+              <li><strong>Pacotes de 1 a 3 meses</strong> seguem com <strong>garantia de 7 dias</strong>.</li>
+            </ul>
             <div class="cta-row">
               <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Quero participar da Jornada: Mentoria em TO</a>
             </div>
@@ -1795,7 +2067,7 @@
         </div>
       </section>
 
-      <section class="final-cta" id="comunidade" aria-labelledby="final-title">
+      <section class="final-cta" id="inscricao" aria-labelledby="final-title">
         <div class="copy-stack">
           <h2 id="final-title">Se voc&ecirc; chegou at&eacute; aqui, j&aacute; percebeu que continuar tentando do mesmo jeito s&oacute; mant&eacute;m o ciclo de esgotamento</h2>
           <p>E que for&ccedil;ar mais n&atilde;o resolve.</p>
@@ -1804,10 +2076,6 @@
             <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Quero participar da Jornada: Mentoria em TO</a>
             <a class="btn btn-outline" href="#video-gratuito">Assistir etapas gratuitas</a>
           </div>
-          <p class="hero-note">
-            Se voc&ecirc; prefere acompanhar mais de perto antes de decidir, voc&ecirc; tamb&eacute;m pode
-            <a class="discreet-link" href="https://chat.whatsapp.com/CtPE3UgoV2SKv9xSieZ1lf">entrar na comunidade</a>.
-          </p>
         </div>
       </section>
     </main>
@@ -1823,6 +2091,9 @@
       const testimonialTrack = document.querySelector("[data-testimonial-track]");
       const testimonialPrevButtons = document.querySelectorAll("[data-testimonial-prev]");
       const testimonialNextButtons = document.querySelectorAll("[data-testimonial-next]");
+      const planTrack = document.querySelector("[data-plan-track]");
+      const planPrevButtons = document.querySelectorAll("[data-plan-prev]");
+      const planNextButtons = document.querySelectorAll("[data-plan-next]");
       const videoFrame = document.querySelector("[data-video-src]");
 
       function updateHeader() {
@@ -1912,6 +2183,33 @@
         testimonialTrack.addEventListener("scroll", requestActiveTestimonialUpdate, { passive: true });
         window.addEventListener("resize", updateActiveTestimonial);
         updateActiveTestimonial();
+      }
+
+      if (planTrack) {
+        const planCards = Array.from(planTrack.querySelectorAll(".plan-card"));
+
+        const getPlanStep = () => {
+          const firstCard = planCards[0];
+          const styles = window.getComputedStyle(planTrack);
+          const gap = Number.parseFloat(styles.columnGap) || 0;
+
+          return firstCard.getBoundingClientRect().width + gap;
+        };
+
+        function scrollPlans(direction) {
+          planTrack.scrollBy({
+            left: getPlanStep() * direction,
+            behavior: "smooth"
+          });
+        }
+
+        planPrevButtons.forEach((button) => {
+          button.addEventListener("click", () => scrollPlans(-1));
+        });
+
+        planNextButtons.forEach((button) => {
+          button.addEventListener("click", () => scrollPlans(1));
+        });
       }
     </script>
   </body>
