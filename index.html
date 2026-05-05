@@ -654,12 +654,36 @@
       }
 
       .testimonial-avatar {
+        position: relative;
         flex: 0 0 auto;
         width: 58px;
         height: 58px;
-        border-radius: var(--radius);
-        object-fit: cover;
         border: 2px solid var(--orange);
+        border-radius: var(--radius);
+        background: var(--soft-2);
+      }
+
+      .testimonial-avatar::before,
+      .testimonial-avatar::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--orange);
+      }
+
+      .testimonial-avatar::before {
+        top: 13px;
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+      }
+
+      .testimonial-avatar::after {
+        bottom: 12px;
+        width: 30px;
+        height: 16px;
+        border-radius: 16px 16px 6px 6px;
       }
 
       .testimonial-author strong,
@@ -672,6 +696,10 @@
         color: var(--muted);
         font-size: 0.9rem;
         transition: color 260ms ease;
+      }
+
+      .testimonial-card.is-active .testimonial-avatar {
+        background: rgba(255, 255, 255, 0.08);
       }
 
       .testimonial-card.is-active .testimonial-author span {
@@ -1392,9 +1420,9 @@
               <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
               <blockquote>&ldquo;Consegui organizar minha energia sem me for&ccedil;ar e parei de achar que tudo era falta de esfor&ccedil;o.&rdquo;</blockquote>
               <div class="testimonial-author">
-                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
+                <span class="testimonial-avatar" aria-hidden="true"></span>
                 <div>
-                  <strong>Participante da Jornada</strong>
+                  <strong>Ana P.</strong>
                   <span>5 estrelas</span>
                 </div>
               </div>
@@ -1404,9 +1432,9 @@
               <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
               <blockquote>&ldquo;Parei de entrar em colapso depois de dias produtivos porque comecei a reconhecer meus sinais antes.&rdquo;</blockquote>
               <div class="testimonial-author">
-                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
+                <span class="testimonial-avatar" aria-hidden="true"></span>
                 <div>
-                  <strong>Participante da Jornada</strong>
+                  <strong>Marina S.</strong>
                   <span>5 estrelas</span>
                 </div>
               </div>
@@ -1416,9 +1444,9 @@
               <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
               <blockquote>&ldquo;Hoje consigo me respeitar sem culpa. Entendi que eu precisava de estrat&eacute;gia, n&atilde;o de mais cobran&ccedil;a.&rdquo;</blockquote>
               <div class="testimonial-author">
-                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
+                <span class="testimonial-avatar" aria-hidden="true"></span>
                 <div>
-                  <strong>Participante da Jornada</strong>
+                  <strong>Luiza R.</strong>
                   <span>5 estrelas</span>
                 </div>
               </div>
@@ -1428,9 +1456,9 @@
               <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 4 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
               <blockquote>&ldquo;As orienta&ccedil;&otilde;es me ajudaram a perceber o que drenava minha energia antes de eu chegar no limite.&rdquo;</blockquote>
               <div class="testimonial-author">
-                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
+                <span class="testimonial-avatar" aria-hidden="true"></span>
                 <div>
-                  <strong>Participante da Jornada</strong>
+                  <strong>Camila T.</strong>
                   <span>4 estrelas</span>
                 </div>
               </div>
@@ -1440,9 +1468,9 @@
               <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
               <blockquote>&ldquo;Ter um caminho com passos menores fez diferen&ccedil;a. Pela primeira vez n&atilde;o senti que precisava acompanhar tudo perfeitamente.&rdquo;</blockquote>
               <div class="testimonial-author">
-                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
+                <span class="testimonial-avatar" aria-hidden="true"></span>
                 <div>
-                  <strong>Participante da Jornada</strong>
+                  <strong>Beatriz M.</strong>
                   <span>5 estrelas</span>
                 </div>
               </div>
@@ -1452,9 +1480,9 @@
               <div class="stars" aria-label="Avalia&ccedil;&atilde;o: 4 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
               <blockquote>&ldquo;Eu estava tentando organizar rotina com ferramentas que n&atilde;o conversavam comigo. Aqui consegui entender meu ritmo.&rdquo;</blockquote>
               <div class="testimonial-author">
-                <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&h=160&q=80" alt="Foto de participante da Jornada" loading="lazy" />
+                <span class="testimonial-avatar" aria-hidden="true"></span>
                 <div>
-                  <strong>Participante da Jornada</strong>
+                  <strong>Renata L.</strong>
                   <span>4 estrelas</span>
                 </div>
               </div>
