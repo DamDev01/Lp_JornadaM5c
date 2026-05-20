@@ -874,7 +874,7 @@
       }
 
       .offer-layout {
-        grid-template-columns: 1fr 380px;
+        grid-template-columns: 0.82fr 1.18fr;
         align-items: center;
       }
 
@@ -889,29 +889,18 @@
       }
 
       .plan-controls {
-        justify-content: flex-start;
-      }
-
-      .plan-controls .carousel-btn {
-        border-color: rgba(255, 255, 255, 0.2);
-        background: rgba(255, 255, 255, 0.1);
-        color: var(--white);
+        display: none;
       }
 
       .plans-carousel {
         display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: minmax(255px, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 16px;
-        overflow-x: auto;
-        padding: 12px 4px 24px;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        scrollbar-width: thin;
+        padding: 12px 4px 4px;
       }
 
       .plan-card {
-        min-height: 330px;
+        min-height: 360px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -921,7 +910,6 @@
         background: var(--white);
         color: var(--black);
         box-shadow: 0 24px 55px rgba(0, 0, 0, 0.32);
-        scroll-snap-align: start;
         animation: floatPlan 5.5s ease-in-out infinite;
       }
 
@@ -1228,7 +1216,7 @@
         }
 
         .plans-carousel {
-          grid-auto-columns: minmax(260px, 360px);
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .guarantee-seal {
@@ -1311,6 +1299,10 @@
 
         .plan-card .btn {
           font-size: 0.84rem;
+        }
+
+        .plans-carousel {
+          grid-template-columns: 1fr;
         }
 
         .learn-box {
@@ -1640,7 +1632,7 @@
         <div class="offer-layout">
           <div>
             <p class="eyebrow">Conhe&ccedil;a nossos planos</p>
-            <h2 id="oferta-title">Escolha como participar da Jornada: Mentoria em TO</h2>
+            <h2 id="oferta-title">Escolha sua forma de entrada</h2>
             <p>A Jornada: Mentoria em TO &eacute; uma mentoria estruturada de Terapia Ocupacional voltada para adultos autistas em burnout que precisam continuar funcionando na vida real.</p>
             <p>N&atilde;o &eacute; um curso te&oacute;rico. E tamb&eacute;m n&atilde;o &eacute; motivacional.</p>
             <p>&Eacute; um processo guiado para voc&ecirc; desenvolver habilidades pr&aacute;ticas que te ajudam a sair do ciclo de esgotamento e voltar a funcionar com mais estabilidade.</p>
@@ -1655,68 +1647,55 @@
           </div>
 
           <aside class="plans-panel" aria-label="Planos de investimento">
-            <p>Primeiro ciclo da comunidade: 8 meses. Pagamento &agrave; vista tem condi&ccedil;&otilde;es especiais de apresenta&ccedil;&atilde;o.</p>
+            <p>Escolha o tempo de acesso mais compat&iacute;vel com seu momento.</p>
             <div class="plan-controls" aria-label="Controles do carrossel de planos">
               <button class="carousel-btn" type="button" data-plan-prev aria-label="Plano anterior">&lsaquo;</button>
               <button class="carousel-btn" type="button" data-plan-next aria-label="Pr&oacute;ximo plano">&rsaquo;</button>
             </div>
-            <div class="plans-carousel" data-plan-track aria-label="Carrossel de planos">
+            <div class="plans-carousel" data-plan-track aria-label="Planos de acesso">
               <article class="plan-card">
                 <div>
-                  <span class="label">Valor integral</span>
-                  <h3>8x de R$ 197,00</h3>
-                  <div class="price">R$ 1.576,00</div>
-                  <div class="total">Primeiro ciclo completo: 8 meses</div>
+                  <span class="label">Acesso por 3 meses</span>
+                  <h3>Entrada inicial</h3>
+                  <div class="price">R$ 597,00</div>
+                  <div class="total">Ideal para quem deseja come&ccedil;ar agora e conhecer a metodologia na pr&aacute;tica.</div>
                   <ul>
-                    <li>Parcelamento limitado ao m&aacute;ximo.</li>
-                    <li>Ideal para entrar agora e acompanhar todo o ciclo.</li>
+                    <li>Primeiros passos com a Jornada.</li>
+                    <li>Acesso para aplicar a metodologia no seu ritmo.</li>
                   </ul>
                 </div>
-                <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Comprar agora</a>
+                <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Entrar na Jornada</a>
               </article>
 
               <article class="plan-card">
                 <div>
-                  <span class="label">Apresenta&ccedil;&atilde;o</span>
-                  <h3>Pacote de 3 meses</h3>
-                  <div class="price">R$ 531,90</div>
-                  <div class="total">10% OFF no pagamento &agrave; vista</div>
+                  <span class="label">Acesso por 6 meses</span>
+                  <h3>Mais const&acirc;ncia</h3>
+                  <div class="price">R$ 1.067,80</div>
+                  <div class="total">Para quem deseja aprofundar o processo e construir mais const&acirc;ncia.</div>
                   <ul>
-                    <li>Valor base: R$ 591,00.</li>
-                    <li>Entrada mais curta para conhecer o m&eacute;todo.</li>
+                    <li>Mais tempo para praticar e revisar estrat&eacute;gias.</li>
+                    <li>Acompanhamento para sustentar mudan&ccedil;as na rotina.</li>
                   </ul>
                 </div>
-                <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Comprar agora</a>
-              </article>
-
-              <article class="plan-card">
-                <div>
-                  <span class="label">Apresenta&ccedil;&atilde;o</span>
-                  <h3>Pacote de 6 meses</h3>
-                  <div class="price">R$ 945,60</div>
-                  <div class="total">20% OFF no pagamento &agrave; vista</div>
-                  <ul>
-                    <li>Valor base: R$ 1.182,00.</li>
-                    <li>Mais tempo para consolidar rotina e estrat&eacute;gias.</li>
-                  </ul>
-                </div>
-                <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Comprar agora</a>
+                <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Entrar na Jornada</a>
               </article>
 
               <article class="plan-card is-featured">
                 <div>
-                  <span class="label">Melhor op&ccedil;&atilde;o</span>
-                  <h3>Pacote de 8 meses</h3>
-                  <div class="price">R$ 1.103,20</div>
-                  <div class="total">30% OFF no pagamento &agrave; vista</div>
+                  <span class="label">Acesso completo</span>
+                  <h3>8 meses</h3>
+                  <div class="price">R$ 1.300,80</div>
+                  <div class="total">Melhor custo-benef&iacute;cio para acompanhar toda a jornada at&eacute; o final do ciclo.</div>
                   <ul>
-                    <li>Valor base: R$ 1.576,00.</li>
-                    <li>Acompanhamento completo do primeiro ciclo.</li>
+                    <li>Acesso ao ciclo completo da Jornada.</li>
+                    <li>Mais tempo para transformar percep&ccedil;&atilde;o em mudan&ccedil;a pr&aacute;tica.</li>
                   </ul>
                 </div>
-                <a class="btn btn-light" href="https://pay.hotmart.com/C105523440P">Comprar agora</a>
+                <a class="btn btn-light" href="https://pay.hotmart.com/C105523440P">Entrar na Jornada</a>
               </article>
             </div>
+            <p>&#9889; Quanto mais tempo voc&ecirc; permanece na jornada, maior a possibilidade de transformar percep&ccedil;&atilde;o em mudan&ccedil;a pr&aacute;tica e sustent&aacute;vel.</p>
           </aside>
         </div>
       </section>
@@ -2010,17 +1989,16 @@
       <section class="soft-section" id="garantia" aria-labelledby="garantia-title">
         <div class="guarantee-box">
           <div class="guarantee-seal" aria-hidden="true">
-            90
+            7
             <span>dias</span>
           </div>
           <div>
             <p class="eyebrow dark">Garantia</p>
-            <h2 id="garantia-title">Adquirindo 6 meses da Jornada</h2>
+            <h2 id="garantia-title">Garantia - 7 dias</h2>
             <ul class="check-list">
-              <li>Voc&ecirc; tem <strong class="guarantee-highlight">90 dias</strong> de experi&ecirc;ncia com o produto para aplicar o m&eacute;todo e perceber os primeiros movimentos de <strong>mudan&ccedil;a</strong>.</li>
-              <li>Se n&atilde;o perceber mudan&ccedil;a nesse per&iacute;odo, eu ofere&ccedil;o <strong>1 atendimento individual</strong> de <strong>20 minutos</strong> gratuitamente.</li>
-              <li>Depois disso, voc&ecirc; ainda tem <strong>mais 3 meses</strong> para dar continuidade &agrave; Jornada, garantindo seus <strong>6 ou 8 meses de trilha</strong>.</li>
-              <li><strong>Pacotes de 1 a 3 meses</strong> seguem com <strong>garantia de 7 dias</strong>.</li>
+              <li>Voc&ecirc; tem <strong class="guarantee-highlight">7 dias</strong> para acessar a Jornada e avaliar se o formato faz sentido para o seu momento.</li>
+              <li>Se dentro desse prazo voc&ecirc; entender que n&atilde;o &eacute; o melhor caminho, pode solicitar o reembolso conforme as regras da plataforma.</li>
+              <li>A proposta &eacute; simples: voc&ecirc; entra, conhece a metodologia e decide com seguran&ccedil;a.</li>
             </ul>
             <div class="cta-row">
               <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Quero participar da Jornada: Mentoria em TO</a>
