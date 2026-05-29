@@ -1,0 +1,17 @@
+{
+  "name": "jornada-mentoria-to",
+  "version": "1.0.0",
+  "description": "Jornada: Mentoria em TO - Landing page with Vercel Speed Insights",
+  "type": "module",
+  "scripts": {
+    "dev": "echo 'Open index.html in your browser'",
+    "test": "echo \"No tests specified\""
+  },
+  "keywords": ["landing-page", "speed-insights"],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.34.1",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
