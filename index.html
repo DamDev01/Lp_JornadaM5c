@@ -861,6 +861,12 @@
         padding: 12px 4px 4px;
       }
 
+      .plans-carousel.is-single {
+        max-width: 430px;
+        margin: 0 auto;
+        grid-template-columns: 1fr;
+      }
+
       .plan-card {
         min-height: 360px;
         display: flex;
@@ -892,6 +898,12 @@
         border-color: var(--orange);
       }
 
+      .plans-carousel.is-single .plan-card {
+        min-height: 420px;
+        border-width: 2px;
+        transform: scale(1.02);
+      }
+
       .plan-card .label {
         margin-bottom: 16px;
       }
@@ -911,6 +923,23 @@
         font-size: 2rem;
         font-weight: 900;
         line-height: 1;
+      }
+
+      .plans-carousel.is-single .price {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: nowrap;
+        gap: 6px;
+        white-space: nowrap;
+        font-size: clamp(2.4rem, 5vw, 3.7rem);
+        letter-spacing: 0;
+      }
+
+      .plan-card .price span {
+        display: inline;
+        margin-top: 0;
+        font-size: 1.15rem;
+        font-weight: 800;
       }
 
       .plan-card .total {
@@ -1575,7 +1604,7 @@
       <section class="dark-section" id="oferta" aria-labelledby="oferta-title">
         <div class="offer-layout">
           <div>
-            <p class="eyebrow">Conhe&ccedil;a nossos planos</p>
+            <p class="eyebrow">Conhe&ccedil;a nosso plano</p>
             <h2 id="oferta-title">Escolha sua forma de entrada</h2>
             <p>A Jornada: Mentoria em TO &eacute; uma mentoria estruturada de Terapia Ocupacional voltada para adultos autistas em burnout que precisam continuar funcionando na vida real.</p>
             <p>N&atilde;o &eacute; um curso te&oacute;rico. E tamb&eacute;m n&atilde;o &eacute; motivacional.</p>
@@ -1591,49 +1620,18 @@
           </div>
 
           <aside class="plans-panel" aria-label="Planos de investimento">
-            <p>Escolha o tempo de acesso mais compat&iacute;vel com seu momento.</p>
-            <div class="plan-controls" aria-label="Controles do carrossel de planos">
-              <button class="carousel-btn" type="button" data-plan-prev aria-label="Plano anterior">&lsaquo;</button>
-              <button class="carousel-btn" type="button" data-plan-next aria-label="Pr&oacute;ximo plano">&rsaquo;</button>
-            </div>
-            <div class="plans-carousel" data-plan-track aria-label="Planos de acesso">
-              <article class="plan-card">
-                <div>
-                  <span class="label">Acesso por 3 meses</span>
-                  <h3>Entrada inicial</h3>
-                  <div class="price">R$ 597,00</div>
-                  <div class="total">Ideal para quem deseja come&ccedil;ar agora e conhecer a metodologia na pr&aacute;tica.</div>
-                  <ul>
-                    <li>Primeiros passos com a Jornada.</li>
-                    <li>Acesso para aplicar a metodologia no seu ritmo.</li>
-                  </ul>
-                </div>
-                <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Entrar na Jornada</a>
-              </article>
-
-              <article class="plan-card">
-                <div>
-                  <span class="label">Acesso por 6 meses</span>
-                  <h3>Mais const&acirc;ncia</h3>
-                  <div class="price">R$ 1.067,80</div>
-                  <div class="total">Para quem deseja aprofundar o processo e construir mais const&acirc;ncia.</div>
-                  <ul>
-                    <li>Mais tempo para praticar e revisar estrat&eacute;gias.</li>
-                    <li>Acompanhamento para sustentar mudan&ccedil;as na rotina.</li>
-                  </ul>
-                </div>
-                <a class="btn btn-primary" href="https://pay.hotmart.com/C105523440P">Entrar na Jornada</a>
-              </article>
-
+            <p>Um plano mensal para voc&ecirc; entrar na Jornada e aplicar o m&eacute;todo no seu ritmo.</p>
+            <div class="plans-carousel is-single" data-plan-track aria-label="Plano de acesso mensal">
               <article class="plan-card is-featured">
                 <div>
-                  <span class="label">Acesso completo</span>
-                  <h3>8 meses</h3>
-                  <div class="price">R$ 1.300,80</div>
-                  <div class="total">Melhor custo-benef&iacute;cio para acompanhar toda a jornada at&eacute; o final do ciclo.</div>
+                  <span class="label">Plano mensal</span>
+                  <h3>Jornada: Mentoria em TO</h3>
+                  <div class="price">R$ 197,00<span>/m&ecirc;s</span></div>
+                  <div class="total">Acesso para come&ccedil;ar agora, organizar sua energia e aplicar a metodologia com acompanhamento.</div>
                   <ul>
-                    <li>Acesso ao ciclo completo da Jornada.</li>
-                    <li>Mais tempo para transformar percep&ccedil;&atilde;o em mudan&ccedil;a pr&aacute;tica.</li>
+                    <li>Mentoria estruturada para adultos autistas em burnout.</li>
+                    <li>Estrat&eacute;gias pr&aacute;ticas para rotina, energia e limites.</li>
+                    <li>Processo guiado para construir const&acirc;ncia sem se destruir.</li>
                   </ul>
                 </div>
                 <a class="btn btn-light" href="https://pay.hotmart.com/C105523440P">Entrar na Jornada</a>
