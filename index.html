@@ -931,7 +931,7 @@
         flex-wrap: nowrap;
         gap: 6px;
         white-space: nowrap;
-        font-size: clamp(2.4rem, 5vw, 3.7rem);
+        font-size: clamp(2.35rem, 4.4vw, 3.1rem);
         letter-spacing: 0;
       }
 
@@ -942,6 +942,21 @@
         font-weight: 800;
       }
 
+      .cash-price {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin: 2px 0 14px;
+        color: rgba(0, 0, 0, 0.7);
+        font-size: 0.98rem;
+        font-weight: 800;
+      }
+
+      .cash-price strong {
+        color: var(--black);
+        font-size: 1.08rem;
+      }
+
       .plan-card .total {
         color: var(--muted);
         font-size: 0.95rem;
@@ -949,6 +964,29 @@
 
       .plan-card.is-featured .total {
         color: rgba(0, 0, 0, 0.72);
+      }
+
+      .program-duration {
+        display: grid;
+        gap: 10px;
+        margin: 18px 0 0;
+        padding: 16px;
+        border: 1px solid rgba(0, 0, 0, 0.16);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.28);
+      }
+
+      .program-duration p {
+        margin: 0;
+        color: rgba(0, 0, 0, 0.78);
+        font-size: 0.94rem;
+        line-height: 1.45;
+      }
+
+      .program-duration strong {
+        display: block;
+        color: var(--black);
+        font-size: 1rem;
       }
 
       .plan-card ul {
@@ -1320,6 +1358,10 @@
           font-size: 0.84rem;
         }
 
+        .plans-carousel.is-single .price {
+          font-size: clamp(2rem, 12vw, 2.45rem);
+        }
+
         .plans-carousel {
           grid-template-columns: 1fr;
         }
@@ -1670,8 +1712,13 @@
                 <div>
                   <span class="label">Investimento</span>
                   <h3>Jornada: Mentoria em TO</h3>
-                  <div class="price">R$ 1.576,00<span></span></div>
+                  <div class="price"><span>12x de</span> R$ 197,00</div>
+                  <div class="cash-price">&Agrave; vista R$ <strong>1.576,00</strong></div>
                   <div class="total">Acesso para come&ccedil;ar agora, organizar sua energia e aplicar a metodologia com acompanhamento.</div>
+                  <div class="program-duration" aria-label="Dura&ccedil;&atilde;o e encontros da mentoria">
+                    <p><strong>Dura&ccedil;&atilde;o do programa</strong>Acompanhamento at&eacute; dezembro, com pausa no per&iacute;odo de Natal e retomada ap&oacute;s as festas em janeiro.</p>
+                    <p><strong>Encontros mensais</strong>1 live em grupo + 1 encontro tira-d&uacute;vidas em grupo por m&ecirc;s.</p>
+                  </div>
                   <ul>
                     <li>Mentoria estruturada para adultos autistas em burnout.</li>
                     <li>Estrat&eacute;gias pr&aacute;ticas para rotina, energia e limites.</li>
