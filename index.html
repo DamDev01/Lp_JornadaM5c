@@ -918,6 +918,78 @@
         line-height: 1.1;
       }
 
+      .offer-badge {
+        display: inline-flex;
+        justify-content: center;
+        width: fit-content;
+        margin: 0 auto 22px;
+        padding: 9px 28px;
+        border-radius: 999px;
+        background: var(--black);
+        color: var(--white);
+        font-size: 0.84rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .price-reference {
+        display: grid;
+        gap: 6px;
+        margin: 22px 0 18px;
+        text-align: center;
+      }
+
+      .price-reference span,
+      .current-price-label {
+        color: rgba(0, 0, 0, 0.76);
+        font-size: 0.98rem;
+        font-weight: 900;
+      }
+
+      .price-reference strong {
+        position: relative;
+        display: inline-block;
+        width: fit-content;
+        margin: 0 auto;
+        color: rgba(0, 0, 0, 0.82);
+        font-size: clamp(2.3rem, 5vw, 3.7rem);
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .price-reference strong::after {
+        content: "";
+        position: absolute;
+        left: -7%;
+        right: -7%;
+        top: 52%;
+        height: 7px;
+        border-radius: 999px;
+        background: #c82323;
+        transform: translateY(-50%);
+      }
+
+      .price-divider {
+        height: 1px;
+        margin: 0 0 18px;
+        background: rgba(0, 0, 0, 0.22);
+      }
+
+      .current-price {
+        display: grid;
+        gap: 4px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .cash-highlight {
+        color: #0f4f37;
+        font-size: clamp(2.45rem, 6vw, 4rem);
+        font-weight: 900;
+        line-height: 1;
+      }
+
       .plan-card .price {
         margin: 18px 0 6px;
         font-size: 2rem;
@@ -928,6 +1000,7 @@
       .plans-carousel.is-single .price {
         display: flex;
         align-items: baseline;
+        justify-content: center;
         flex-wrap: nowrap;
         gap: 6px;
         white-space: nowrap;
@@ -945,16 +1018,24 @@
       .cash-price {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 6px;
         margin: 2px 0 14px;
         color: rgba(0, 0, 0, 0.7);
         font-size: 0.98rem;
         font-weight: 800;
+        text-align: center;
       }
 
       .cash-price strong {
         color: var(--black);
         font-size: 1.08rem;
+      }
+
+      .installment-note {
+        color: rgba(0, 0, 0, 0.72);
+        font-size: 0.98rem;
+        font-weight: 800;
       }
 
       .plan-card .total {
@@ -1691,7 +1772,7 @@
         <div class="offer-layout">
           <div>
             <p class="eyebrow">Conhe&ccedil;a o investimento</p>
-            <h2 id="oferta-title">Comece sua Jornada com acesso imediato</h2>
+            <h2 id="oferta-title">Comece sua Jornada com acesso imediato por 12 meses</h2>
             <p>A Jornada: Mentoria em TO &eacute; uma mentoria estruturada de Terapia Ocupacional voltada para adultos autistas em burnout que precisam continuar funcionando na vida real.</p>
             <p>N&atilde;o &eacute; um curso te&oacute;rico. E tamb&eacute;m n&atilde;o &eacute; motivacional.</p>
             <p>&Eacute; um processo guiado para voc&ecirc; desenvolver habilidades pr&aacute;ticas que te ajudam a sair do ciclo de esgotamento e voltar a funcionar com mais estabilidade.</p>
@@ -1706,17 +1787,27 @@
           </div>
 
           <aside class="plans-panel" aria-label="Investimento da Jornada">
-            <p>Um investimento para voc&ecirc; entrar na Jornada e aplicar o m&eacute;todo com acompanhamento.</p>
+            <p>Um investimento para voc&ecirc; entrar agora, ter 12 meses de acesso &agrave; Jornada e aplicar o m&eacute;todo com acompanhamento.</p>
             <div class="plans-carousel is-single" data-plan-track aria-label="Investimento de acesso">
               <article class="plan-card is-featured">
                 <div>
+                  <span class="offer-badge">Oferta especial</span>
                   <span class="label">Investimento</span>
                   <h3>Jornada: Mentoria em TO</h3>
-                  <div class="price"><span>12x de</span> R$ 197,00</div>
-                  <div class="cash-price">&Agrave; vista R$ <strong>1.576,00</strong></div>
-                  <div class="total">Acesso para come&ccedil;ar agora, organizar sua energia e aplicar a metodologia com acompanhamento.</div>
+                  <div class="price-reference">
+                    <span>Valor total no parcelado</span>
+                    <strong>R$ 2.364,00</strong>
+                  </div>
+                  <div class="price-divider" aria-hidden="true"></div>
+                  <div class="current-price">
+                    <span class="current-price-label">Voc&ecirc; paga &agrave; vista</span>
+                    <div class="cash-highlight">R$ 1.576,00</div>
+                    <div class="installment-note">ou 12x de R$ 197,00</div>
+                  </div>
+                  <div class="total">12 meses de acesso para come&ccedil;ar agora, organizar sua energia e aplicar a metodologia com acompanhamento.</div>
                   <div class="program-duration" aria-label="Dura&ccedil;&atilde;o e encontros da mentoria">
-                    <p><strong>Dura&ccedil;&atilde;o do programa</strong>Acompanhamento at&eacute; dezembro, com pausa no per&iacute;odo de Natal e retomada ap&oacute;s as festas em janeiro.</p>
+                    <p><strong>Acesso &agrave; Jornada</strong>Voc&ecirc; mant&eacute;m acesso por 12 meses a partir da sua entrada.</p>
+                    <p><strong>Calend&aacute;rio dos encontros</strong>Os encontros ao vivo seguem o calend&aacute;rio da turma, com pausa no per&iacute;odo de Natal e retomada ap&oacute;s as festas em janeiro.</p>
                     <p><strong>Encontros mensais</strong>1 live em grupo + 1 encontro tira-d&uacute;vidas em grupo por m&ecirc;s.</p>
                   </div>
                   <ul>
@@ -1835,8 +1926,8 @@
         </div>
 
         <div class="trait-note">
-          <p><strong>Total em 2026:</strong> 13 tra&ccedil;os ao longo de 8 meses de Jornada, de maio a dezembro.</p>
-          <p><strong>Em 2027:</strong> a Jornada aumenta para 15 tra&ccedil;os, em 10 meses de acompanhamento, de mar&ccedil;o a dezembro.</p>
+          <p><strong>Total em 2026:</strong> 13 tra&ccedil;os trabalhados no ciclo da Jornada, de maio a dezembro.</p>
+          <p><strong>Em 2027:</strong> a Jornada aumenta para 15 tra&ccedil;os trabalhados no ciclo de mar&ccedil;o a dezembro.</p>
         </div>
       </section>
 
